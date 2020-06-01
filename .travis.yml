@@ -3,8 +3,7 @@ node_js:
   - "stable"
 script:
   - npm test
-  - npm run build --debug --info
-
+  - npm run build debug
 notifications:
   email: true
 
