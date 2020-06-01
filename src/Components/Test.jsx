@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { Button, Form, Col, Container, Label } from 'react-bootstrap';
+import { Button, Form, Col, Container } from 'react-bootstrap';
 
 export default function Test() {
     /*
