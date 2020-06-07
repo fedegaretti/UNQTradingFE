@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 import '../App.css';
 import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
 import {saveOrdenDeVenta} from '../Service/RestService'
