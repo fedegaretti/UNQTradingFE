@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import OrdenesDeVentaTable from './OrdenesDeVentaTable';
 import Venta from './Venta';
 import '../App.css';
-import { Link } from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
 
 export default function OrdenesDeVenta()  {
