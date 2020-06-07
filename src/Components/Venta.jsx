@@ -13,10 +13,7 @@ export default function Venta() {
     const [precioClass, setPrecioClass] = useState('form-control');
 
     return (
-        <div className="App">
-            <Container>
-            <Row className="justify-content-md-center">
-            <Col xs = {4}>
+        <div>
             <Form>
               <Form.Group controlId="cantidad">
                 <Form.Label>Cantidad de acciones</Form.Label>
@@ -47,9 +44,6 @@ export default function Venta() {
                 Enviar
               </Button>
             </Form>
-            </Col>
-            </Row>
-            </Container>
         </div>
     );
 
