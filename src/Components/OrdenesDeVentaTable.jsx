@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {findOrdenesDeVentaByEmpresa} from '../Service/RestService'
 
 export default function OrdenesDeVentaTable() {
     const [ordenes, handleOrdenes] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/venta/all?nombreEmpresa=UNQ`)
+        findOrdenesDeVentaByEmpresa("UNQ")
             .then(response => handleOrdenes(response.data))
     })
 
