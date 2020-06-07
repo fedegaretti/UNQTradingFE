@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import '../App.css';
 import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
+import {saveOrdenDeVenta} from '../Service/RestService'
+
 
 export default function Venta() {
 
@@ -89,7 +91,7 @@ export default function Venta() {
     }
 
     function sent() {
-        axios.post(`http://localhost:8080/api/venta/save`, {
+        saveOrdenDeVenta({
             nombreEmpresa : "UNQ",
             cantidadDeAcciones : cantidad,
             precio : precio,
