@@ -2,6 +2,7 @@
   background-image: url("./Images/buenosaires.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  border: 1px solid red; 
 }
 
 .App-logo {

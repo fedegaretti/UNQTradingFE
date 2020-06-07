@@ -6,10 +6,10 @@ export default function OrdenesDeVenta()  {
 
 return (
         <div>
-            <div className="bg-secondary row justify-content-center">
+            <div className="bg-secondary row justify-content-center mb-4">
                 <h3 className="text-white"> Visualización de Acciones </h3>
             </div>
-            <div className="container">
+            <div className="container padding-top">
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '80vh'}}>
                     <OrdenesDeVentaTable/>
                 </div>
