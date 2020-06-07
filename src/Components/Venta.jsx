@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import '../App.css';
 import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
+import {saveOrdenDeVenta} from '../Service/RestService'
+
 
 export default function Venta() {
 
@@ -39,9 +41,9 @@ export default function Venta() {
 
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
-                    <InputGroup.Text><i class="fas fa-calendar-day"></i></InputGroup.Text>
+                    <InputGroup.Text>Vencimiento</InputGroup.Text>
                   </InputGroup.Prepend>
-                <Form.Control type="text" placeholder="Vencimiento (dd-mm-yyyy)"
+                <Form.Control type="date"
                              className= {vencimientoClass}
                              onChange={e => setVencimiento(e.target.value)}
                              onBlur={e => handleVencimiento(e, e.target.value)} />
@@ -80,8 +82,7 @@ export default function Venta() {
 
     function handleVencimiento(ev, value){
         ev.preventDefault();
-        const regex = /^(\d{1,2})-(\d{1,2})-(\d{4})$/;
-        if (regex.test(value)) {
+        if (Date.parse(value) > Date.now()) {
             setVencimientoClass("form-control is-valid");
         }else{
             setVencimientoClass("form-control is-invalid");
@@ -89,7 +90,7 @@ export default function Venta() {
     }
 
     function sent() {
-        axios.post(`http://localhost:8080/api/venta/save`, {
+        saveOrdenDeVenta({
             nombreEmpresa : "UNQ",
             cantidadDeAcciones : cantidad,
             precio : precio,
