@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import '../App.css';
-import { Button, Form, Col, Container, Row } from 'react-bootstrap';
+import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
 
 export default function Venta() {
 
@@ -11,45 +11,52 @@ export default function Venta() {
     const [cantidadClass, setCantidadClass] = useState('form-control');
     const [vencimientoClass, setVencimientoClass] = useState('form-control');
     const [precioClass, setPrecioClass] = useState('form-control');
+    const [alert, setAlert] = useState({show: false, variant: "danger", message: ''});
 
     return (
-        <div className="App">
-            <Container>
-            <Row className="justify-content-md-center">
-            <Col xs = {4}>
+        <div>
             <Form>
-              <Form.Group controlId="cantidad">
-                <Form.Label>Cantidad de acciones</Form.Label>
-                <Form.Control type="number"
-                            className= {cantidadClass}
-                            placeholder="Ingrese una cantidad"
-                            onChange={e => setCantidad(e.target.value)}
-                            onBlur={e => handleCantidad(e, e.target.value)} />
-              </Form.Group>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text><i class="fas fa-chart-line"></i></InputGroup.Text>
+                  </InputGroup.Prepend>
+                    <Form.Control type="number"
+                                className= {cantidadClass}
+                                placeholder="Cantidad de acciones"
+                                onChange={e => setCantidad(e.target.value)}
+                                onBlur={e => handleCantidad(e, e.target.value)} />
+                </InputGroup>
 
-              <Form.Group controlId="precio">
-                <Form.Label>Precio</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese el precio"
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>$</InputGroup.Text>
+                  </InputGroup.Prepend>
+                <Form.Control type="number" placeholder="Precio"
                              className= {precioClass}
                              onChange={e => setPrecio(e.target.value)}
                              onBlur={e => handlePrecio(e, e.target.value)} />
-              </Form.Group>
+                </InputGroup>
 
-              <Form.Group controlId="vencimiento">
-                <Form.Label>Fecha vencimiento</Form.Label>
-                <Form.Control type="text" placeholder="Formato dd-mm-yyyy"
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text><i class="fas fa-calendar-day"></i></InputGroup.Text>
+                  </InputGroup.Prepend>
+                <Form.Control type="text" placeholder="Vencimiento (dd-mm-yyyy)"
                              className= {vencimientoClass}
                              onChange={e => setVencimiento(e.target.value)}
                              onBlur={e => handleVencimiento(e, e.target.value)} />
-              </Form.Group>
+                </InputGroup>
 
-              <Button variant="primary" onClick={ev => sent()}>
-                Enviar
-              </Button>
+                <InputGroup className="mb-3">
+                  <Button variant="primary" onClick={ev => sent()}>
+                    Enviar
+                  </Button>
+                </InputGroup>
+
+                <Alert variant={alert.variant} show={alert.show}>
+                    {alert.message}
+                </Alert>
             </Form>
-            </Col>
-            </Row>
-            </Container>
         </div>
     );
 
@@ -88,9 +95,17 @@ export default function Venta() {
             precio : precio,
             fechaDeVencimiento : vencimiento
         }).then((response) => {
-            alert("ok")
+            setAlert({
+                show: true,
+                variant: "success",
+                message: "Orden cargada correctamente"
+            })
         }).catch((error) => {
-            alert("fail")
+            setAlert({
+                show: true,
+                variant: "danger",
+                message: "Ocurrio un error al cargar la orden. Intente nuevamente"
+            })
         })
     }
 
