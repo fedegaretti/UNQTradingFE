@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import '../App.css';
-import { Button, Form, Col, Container, Row } from 'react-bootstrap';
+import { Button, Form, Col, Container, Row, InputGroup } from 'react-bootstrap';
 
 export default function Venta() {
 
@@ -15,30 +15,39 @@ export default function Venta() {
     return (
         <div>
             <Form>
-              <Form.Group controlId="cantidad">
-                <Form.Label>Cantidad de acciones</Form.Label>
-                <Form.Control type="number"
-                            className= {cantidadClass}
-                            placeholder="Ingrese una cantidad"
-                            onChange={e => setCantidad(e.target.value)}
-                            onBlur={e => handleCantidad(e, e.target.value)} />
-              </Form.Group>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1"><i class="fas fa-chart-line"></i></InputGroup.Text>
+                  </InputGroup.Prepend>
+                    <Form.Control type="number"
+                                className= {cantidadClass}
+                                placeholder="Cantidad de acciones"
+                                onChange={e => setCantidad(e.target.value)}
+                                onBlur={e => handleCantidad(e, e.target.value)} />
+                </InputGroup>
 
-              <Form.Group controlId="precio">
-                <Form.Label>Precio</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese el precio"
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                  </InputGroup.Prepend>
+                <Form.Control type="number" placeholder="Precio"
                              className= {precioClass}
                              onChange={e => setPrecio(e.target.value)}
                              onBlur={e => handlePrecio(e, e.target.value)} />
-              </Form.Group>
+                </InputGroup>
 
-              <Form.Group controlId="vencimiento">
-                <Form.Label>Fecha vencimiento</Form.Label>
-                <Form.Control type="text" placeholder="Formato dd-mm-yyyy"
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text id="basic-addon1"><i class="fas fa-calendar-day"></i></InputGroup.Text>
+                  </InputGroup.Prepend>
+                <Form.Control type="text" placeholder="Vencimiento (dd-mm-yyyy)"
                              className= {vencimientoClass}
                              onChange={e => setVencimiento(e.target.value)}
                              onBlur={e => handleVencimiento(e, e.target.value)} />
-              </Form.Group>
+                </InputGroup>
+
+
+
 
               <Button variant="primary" onClick={ev => sent()}>
                 Enviar
