@@ -17,9 +17,6 @@ class App extends Component {
             <Route path="/ordenesVenta" component={OrdenesDeVenta}/>
         </Switch>
       </BrowserRouter>
-      <footer className="row justify-content-center"> 
-        UNQTrading todos los derechos reservados 
-      </footer>
     </div>
     );
   }
