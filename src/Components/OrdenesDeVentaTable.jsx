@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import {findOrdenesDeVentaByEmpresa} from '../Service/RestService'
 
 export default function OrdenesDeVentaTable() {

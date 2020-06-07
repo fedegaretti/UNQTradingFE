@@ -7,18 +7,21 @@ import { Button, Modal } from 'react-bootstrap';
 export default function OrdenesDeVenta()  {
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+      setShow(false)
+      window.location.reload(false)
+    };
     const handleShow = () => setShow(true);
 
 return (
      <div className="App">
-            <div className="bg-secondary d-flex justify-content-center mb-4">
-                <h3 className="text-white"> Ordenes de Venta</h3>
+            <div className="d-flex justify-content-center mb-4">
+                <h3 className="text-dark"> Ordenes de Venta</h3>
             </div>
            
             <div className="container pt-5">
-                <div class="row align-items-center pt-5">
-                    <div class="col-sm pt-5">
+                <div className="row align-items-center pt-5">
+                    <div className="col-sm pt-5">
                         <OrdenesDeVentaTable/>
                           <Button variant="primary" onClick={handleShow}>
                             Cargar nueva
