@@ -82,7 +82,6 @@ export default function Venta() {
 
     function handleVencimiento(ev, value){
         ev.preventDefault();
-        console.log(value)
         if (Date.parse(value) > Date.now()) {
             setVencimientoClass("form-control is-valid");
         }else{
