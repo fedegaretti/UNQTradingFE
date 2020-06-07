@@ -11,15 +11,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <BrowserRouter>
-          <Switch>
-              <Route exact path="/" component={Test} />
-              <Route path="/venta" component={Venta} />
-              <Route path="/ordenesVenta" component={OrdenesDeVenta}/>
-          </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Switch>
+          <Route exact path="/" component={OrdenesDeVenta} />
+          <Route path="/venta" component={Venta} />
+          <Route path="/ordenesVenta" component={OrdenesDeVenta}/>
+      </Switch>
+    </BrowserRouter>
     );
   }
 }
