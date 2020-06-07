@@ -51,7 +51,7 @@ export default function Venta() {
 
                 <InputGroup className="mb-3">
                   <Button variant="primary" onClick={ev => sent()}>
-                    Enviar
+                    Cargar
                   </Button>
                 </InputGroup>
 
