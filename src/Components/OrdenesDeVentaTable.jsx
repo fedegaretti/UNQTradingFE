@@ -8,7 +8,7 @@ export default function OrdenesDeVentaTable() {
     useEffect(() => {
         findOrdenesDeVentaByEmpresa("UNQ")
             .then(response => handleOrdenes(response.data))
-    })
+    }, [])
 
     return (
          <div className="container row justify-content-center">
