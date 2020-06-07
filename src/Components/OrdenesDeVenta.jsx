@@ -1,60 +1,24 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, {useState} from 'react';
+import OrdenesDeVentaTable from './OrdenesDeVentaTable';
 
-export default class OrdenesDeVenta extends Component {
+export default function OrdenesDeVenta()  {
 
-  constructor(props) {
-        super(props);
-        this.state = {
-            ordenes:[]
-
-        }
-    }
-
-    renderOrdenesDeVenta = () => {
-        return this.state.ordenes.map(e => <tr>
-            <td>{e.cantidadDeAcciones}</td>
-            <td>{e.precio}</td>
-            <td>{e.fechaDeCreacion}</td>
-            <td>{e.fechaDeVencimiento}</td>
-        </tr>)
-    }
-
-
-     componentDidMount = () => {
-          axios.get(`http://localhost:8080/api/venta/all?nombreEmpresa=UNQ`)
-                .then(response =>
-                    this.setState({
-                    ordenes : response.data
-
-                     })
-                )
-     }
-
-    render() {
-        return (
-            <div className="App">
-                <header className="bg-primary">
-                    <div className=" row justify-content-center">
-                        <h3 className="text-white"> Visualización de Acciones </h3>
+return (
+        <div>
+            <div className="container">
+            <header className="bg-primary">
+                <div className=" row justify-content-center">
+                    <h3 className="text-white"> Visualización de Acciones </h3>
+                </div>
+            </header>
+            <div className="container">
+                <div className="d-flex flex-column">
+                    <div className="d-flex flex-wrap align-items-center">
+                        <OrdenesDeVentaTable/>
                     </div>
-                </header>
-                 <div className="row justify-content-center">
-                    <table className="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">Cantidad de acciones</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Fecha Creación</th>
-                                <th scope="col">Fecha Vencimiento</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderOrdenesDeVenta()}
-                         </tbody>
-                    </table>
-                 </div>
+                </div>
              </div>
+            </div>
+         </div>
         );
     }
-}
