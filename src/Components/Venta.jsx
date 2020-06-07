@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import '../App.css';
-import { Button, Form, Col, Container, Row, InputGroup } from 'react-bootstrap';
+import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
 
 export default function Venta() {
 
@@ -11,13 +11,14 @@ export default function Venta() {
     const [cantidadClass, setCantidadClass] = useState('form-control');
     const [vencimientoClass, setVencimientoClass] = useState('form-control');
     const [precioClass, setPrecioClass] = useState('form-control');
+    const [alert, setAlert] = useState({show: false, variant: "danger", message: ''});
 
     return (
         <div>
             <Form>
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1"><i class="fas fa-chart-line"></i></InputGroup.Text>
+                    <InputGroup.Text><i class="fas fa-chart-line"></i></InputGroup.Text>
                   </InputGroup.Prepend>
                     <Form.Control type="number"
                                 className= {cantidadClass}
@@ -28,7 +29,7 @@ export default function Venta() {
 
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
+                    <InputGroup.Text>$</InputGroup.Text>
                   </InputGroup.Prepend>
                 <Form.Control type="number" placeholder="Precio"
                              className= {precioClass}
@@ -38,7 +39,7 @@ export default function Venta() {
 
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1"><i class="fas fa-calendar-day"></i></InputGroup.Text>
+                    <InputGroup.Text><i class="fas fa-calendar-day"></i></InputGroup.Text>
                   </InputGroup.Prepend>
                 <Form.Control type="text" placeholder="Vencimiento (dd-mm-yyyy)"
                              className= {vencimientoClass}
@@ -46,12 +47,15 @@ export default function Venta() {
                              onBlur={e => handleVencimiento(e, e.target.value)} />
                 </InputGroup>
 
+                <InputGroup className="mb-3">
+                  <Button variant="primary" onClick={ev => sent()}>
+                    Enviar
+                  </Button>
+                </InputGroup>
 
-
-
-              <Button variant="primary" onClick={ev => sent()}>
-                Enviar
-              </Button>
+                <Alert variant={alert.variant} show={alert.show}>
+                    {alert.message}
+                </Alert>
             </Form>
         </div>
     );
@@ -91,9 +95,17 @@ export default function Venta() {
             precio : precio,
             fechaDeVencimiento : vencimiento
         }).then((response) => {
-            alert("ok")
+            setAlert({
+                show: true,
+                variant: "success",
+                message: "Orden cargada correctamente"
+            })
         }).catch((error) => {
-            alert("fail")
+            setAlert({
+                show: true,
+                variant: "danger",
+                message: "Ocurrio un error al cargar la orden. Intente nuevamente"
+            })
         })
     }
 
