@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import '../App.css';
 import { Button, Form, Col, Container, Row } from 'react-bootstrap';
 
 export default function Venta() {
@@ -12,7 +13,7 @@ export default function Venta() {
     const [precioClass, setPrecioClass] = useState('form-control');
 
     return (
-        <div>
+        <div className="App">
             <Container>
             <Row className="justify-content-md-center">
             <Col xs = {4}>
@@ -82,7 +83,7 @@ export default function Venta() {
 
     function sent() {
         axios.post(`http://localhost:8080/api/venta/save`, {
-            nombreEmpresa : "Pepe Company",
+            nombreEmpresa : "UNQ",
             cantidadDeAcciones : cantidad,
             precio : precio,
             fechaDeVencimiento : vencimiento
