@@ -32,9 +32,9 @@ export default class OrdenesDeVentaTable extends Component {
 
     render() {
         return (
-             <div className=" container row justify-content-center">
-                <table className="table table-bordered table-striped">
-                    <thead className="bg-primary text-white">
+             <div className="container row justify-content-center">
+                <table className="table table-striped table-dark">
+                    <thead className="bg-secondary ">
                         <tr>
                             <th scope="col">Cantidad de acciones</th>
                             <th scope="col">Precio</th>
