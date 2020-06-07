@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { Button, Form, Col, Container } from 'react-bootstrap';
+import { Button, Form, Col, Container, Row } from 'react-bootstrap';
 
 export default function Venta() {
 
@@ -14,6 +14,8 @@ export default function Venta() {
     return (
         <div>
             <Container>
+            <Row className="justify-content-md-center">
+            <Col xs = {4}>
             <Form>
               <Form.Group controlId="cantidad">
                 <Form.Label>Cantidad de acciones</Form.Label>
@@ -44,7 +46,8 @@ export default function Venta() {
                 Enviar
               </Button>
             </Form>
-
+            </Col>
+            </Row>
             </Container>
         </div>
     );
@@ -86,7 +89,6 @@ export default function Venta() {
         }).then((response) => {
             alert("ok")
         }).catch((error) => {
-        console.log(error.response)
             alert("fail")
         })
     }
