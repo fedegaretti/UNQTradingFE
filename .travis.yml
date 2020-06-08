@@ -4,6 +4,7 @@ node_js:
   - "stable"
 
 script:
+  - npm test --passWithNoTests
   - npm run build debug
 
 notifications:
