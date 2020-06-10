@@ -5,7 +5,6 @@ import OrdenesDeVenta from './Components/OrdenesDeVenta.jsx'
 import OrdenDeVenta from './Components/OrdenDeVenta.jsx';
 
 class App extends Component {
-
   render() {
     return (
       <BrowserRouter>
