@@ -30,7 +30,7 @@ export default function OrdenDeVentaButton() {
             setAlert({
                 show: true,
                 variant: "danger",
-                message: "Ocurrio un error al comprar las acciones. Intente nuevamente"
+                message: error.response.data.message
             })
         })
     }
