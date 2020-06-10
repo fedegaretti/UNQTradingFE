@@ -19,7 +19,7 @@ export default function OrdenDeVenta() {
 }
 
 function comprar() {
-    comprarAcciones(1, 1)
+    comprarAcciones(1, orden.id)
 }
 
 
