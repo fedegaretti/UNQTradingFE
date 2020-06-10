@@ -1,27 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {comprarAcciones} from '../Service/RestService'
+import {comprarAcciones, findOrdenDeVenta} from '../Service/RestService'
 export default function OrdenDeVenta() {
-    const [cantidad, setCantidad] = useState('');
-    const [precio, setPrecio] = useState('');
-    const [vencimiento, setVencimiento] = useState('');
-    const [creacion, setCreacion] = useState('');
-    const [nombreEmpresa, setNombre] = useState('');
+    const [orden, setOrden] = useState('')
 
     useEffect(() => {
-        setCantidad(100)
-        setPrecio(100)
-        setVencimiento("2020-10-10")
-        setCreacion("2020-06-06")
-        setNombre("UNQ")
+        findOrdenDeVenta(1).then(response => setOrden(response.data))
     })
 
     return (
         <div>
-            <h1>{cantidad}</h1>
-            <h1>{precio}</h1>
-            <h1>{vencimiento}</h1>
-            <h1>{creacion}</h1>
-            <h1>{nombreEmpresa}</h1>
+            <h1>precio {orden.precio}</h1>
+            <h1>empresa {orden.nombreEmpresa}</h1>
+            <h1>cantidad {orden.cantidadDeAcciones}</h1>
+            <h1>fecha creacion {orden.fechaDeCreacion}</h1>
+            <h1>fecha vencimiento {orden.fechaDeVencimiento}</h1>
         </div>
     )
 }
@@ -29,4 +21,5 @@ export default function OrdenDeVenta() {
 function comprar() {
     comprarAcciones(1, 1)
 }
+
 
