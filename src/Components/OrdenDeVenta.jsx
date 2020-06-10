@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {comprarAcciones, findOrdenDeVenta} from '../Service/RestService'
-import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+
 export default function OrdenDeVenta() {
     const [orden, setOrden] = useState('')
 
@@ -9,7 +10,7 @@ export default function OrdenDeVenta() {
     }, [])
 
     return (
-        <div>
+        <div className="container justify-content-center">
             <Form>
                 <label>Empresa: </label>
                 <Form.Control type="text" defaultValue={orden.nombreEmpresa} readOnly/>
@@ -21,8 +22,10 @@ export default function OrdenDeVenta() {
                 <Form.Control type="date" defaultValue={orden.fechaDeCreacion} readOnly/>
                 <label>Fecha de Vencimiento: </label>
                 <Form.Control type="date" defaultValue={orden.fechaDeVencimiento} readOnly/>
+                <Form.Check type="checkbox" label="Acepto los terminos y condiciones" />
+        
             </Form>
-            <Button variant="primary" onClick={event => comprar(event, orden.id)}>
+            <Button className ="mt-2"variant="primary" onClick={event => comprar(event, orden.id)}>
                     Comprar
             </Button>
         </div>
