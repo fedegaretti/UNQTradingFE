@@ -5,7 +5,12 @@ import { Button, Form, Modal, Alert } from 'react-bootstrap';
 export default function OrdenDeVenta() {
     const [orden, setOrden] = useState('')
     const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false)
+    const handleClose = () => {
+        setShow(false)
+        setAlert({
+            show: false
+        })
+    }
     const [show, setShow] = useState(false);
     const [alert, setAlert] = useState({show: false, variant: "danger", message: ''});
     useEffect(() => {
