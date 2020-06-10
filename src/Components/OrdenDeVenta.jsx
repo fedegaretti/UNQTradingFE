@@ -6,7 +6,7 @@ export default function OrdenDeVenta() {
 
     useEffect(() => {
         findOrdenDeVenta(1).then(response => setOrden(response.data))
-    })
+    }, [])
 
     return (
         <div>
