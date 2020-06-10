@@ -9,11 +9,11 @@ export default function OrdenDeVenta() {
 
     return (
         <div>
-            <h1>precio {orden.precio}</h1>
-            <h1>empresa {orden.nombreEmpresa}</h1>
-            <h1>cantidad {orden.cantidadDeAcciones}</h1>
-            <h1>fecha creacion {orden.fechaDeCreacion}</h1>
-            <h1>fecha vencimiento {orden.fechaDeVencimiento}</h1>
+            <h1>Empresa: {orden.nombreEmpresa}</h1>
+            <h1>Cantidad de Acciones: {orden.cantidadDeAcciones}</h1>
+            <h1>Precio: {orden.precio}</h1>
+            <h1>Fecha de Creacion: {orden.fechaDeCreacion}</h1>
+            <h1>Fecha de Vencimiento: {orden.fechaDeVencimiento}</h1>
         </div>
     )
 }
