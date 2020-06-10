@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {comprarAcciones, findOrdenDeVenta} from '../Service/RestService'
 import { Button, Form, Modal } from 'react-bootstrap';
 
-export default function OrdenDeVenta() {
+export default function OrdenDeVentaButton() {
     const [orden, setOrden] = useState('')
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false)
