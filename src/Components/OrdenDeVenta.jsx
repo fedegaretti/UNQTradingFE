@@ -15,7 +15,7 @@ export default function OrdenDeVenta() {
                 <label>Empresa: </label>
                 <Form.Control type="text" defaultValue={orden.nombreEmpresa} readOnly/>
                 <label>Cantidad de acciones: </label>
-                <Form.Control type="number" defaultValue={orden.cantidadDeAcciones} readnOnly/>
+                <Form.Control type="number" defaultValue={orden.cantidadDeAcciones} readOnly/>
                 <label>Precio: </label>
                 <Form.Control type="number" defaultValue={orden.precio} readOnly/>
                 <label>Fecha de Creacion: </label>
