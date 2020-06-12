@@ -20,11 +20,11 @@ return (
                 <h3 className="text-dark"> Ordenes de Venta</h3>
             </div>
            
-            <div className="container pt-5">
+            <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
                         <OrdenesDeVentaTable/>
-                          <Button variant = "contained" color="primary" onClick={handleShow}>
+                          <Button className="mt-2" variant = "contained" color="primary" onClick={handleShow}>
                             Cargar nueva
                           </Button>
                     </div>
