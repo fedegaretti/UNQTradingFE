@@ -102,7 +102,6 @@ export default function ComprarAccionesForm() {
                 </Button>
             </div>
             <Alert className= "mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
-                <AlertTitle>{alert.title}</AlertTitle>
                 {alert.message}
             </Alert>
         </div>
