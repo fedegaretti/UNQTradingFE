@@ -3,7 +3,7 @@ import {comprarAcciones, findOrdenDeVenta} from '../../Service/RestService'
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button} from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';
-
+import { Checkbox, FormControlLabel } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     root: {
       '& .MuiTextField-root': {
@@ -17,31 +17,44 @@ const useStyles = makeStyles((theme) => ({
 export default function ComprarAccionesForm() {
     const [orden, setOrden] = useState('')
     const [alert, setAlert] = useState({show: false, variant: "danger", message: '', icon: false});
+    const [accept, setAccept] = useState(false)
+
     const classes = useStyles();
     useEffect(() => {
         findOrdenDeVenta(1).then(response => setOrden(response.data))
     }, [])
     
+    function handleAccept(event) {
+        setAccept(event.target.checked)
+    }
+
     function comprar(ev, ordenId) {
         ev.preventDefault()
-        comprarAcciones(1, ordenId)
-        .then((response) => {
+        if (accept) {
+            comprarAcciones(1, ordenId)
+            .then((response) => {
+                setAlert({
+                    show: true,
+                    variant: "filled",
+                    severity: "success",
+                    message: "Acciones compradas correctamente!"
+                })
+            }).catch((error) => {
+                setAlert({
+                    show: true,
+                    severity: "error",
+                    variant: "filled",
+                    message: error.response.data.message
+                })
+            })
+        } else {
             setAlert({
                 show: true,
+                severity: "warning",
                 variant: "filled",
-                title: "Success",
-                severity: "success",
-                message: "Acciones compradas correctamente!"
+                message: "Debes aceptar los terminos y condiciones"
             })
-        }).catch((error) => {
-            setAlert({
-                show: true,
-                title:"error",
-                severity: "error",
-                variant: "filled",
-                message: error.response.data.message
-            })
-        })
+        }
     }
 
     return (
@@ -78,8 +91,13 @@ export default function ComprarAccionesForm() {
                     value={orden.fechaDeVencimiento} 
                     variant="outlined"/>
             </form>
-            <div className="ml-2">
-                <Button className="mt-2" variant= "contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
+            <FormControlLabel className="p-2"
+                control={<Checkbox checked={accept} onChange={event => handleAccept(event)} />}
+                label="Acepto los terminos y condiciones"/>
+          <div>
+          </div>
+            <div>
+                <Button className="p-2 ml-1" variant= "contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
                     Comprar
                 </Button>
             </div>
