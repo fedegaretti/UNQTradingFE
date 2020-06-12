@@ -78,15 +78,15 @@ export default function OrdenDeVentaCompraForm() {
                     value={orden.fechaDeVencimiento} 
                     variant="outlined"/>
             </form>
-                <div className="ml-2">
-                    <Button className="mt-2" variant= "contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
-                        Comprar
-                    </Button>
-                </div>
-                <Alert className= "mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
-                    <AlertTitle>{alert.title}</AlertTitle>
-                    {alert.message}
-                </Alert>
+            <div className="ml-2">
+                <Button className="mt-2" variant= "contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
+                    Comprar
+                </Button>
+            </div>
+            <Alert className= "mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
+                <AlertTitle>{alert.title}</AlertTitle>
+                {alert.message}
+            </Alert>
         </div>
     )
 }
