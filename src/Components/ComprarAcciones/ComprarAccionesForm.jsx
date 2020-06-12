@@ -66,25 +66,25 @@ export default function ComprarAccionesForm() {
                     label="Nombre Empresa"
                     value={orden.nombreEmpresa}
                     variant="outlined"/>
-                    <TextField
+                <TextField
                     disabled
                     id="cantidad"
                     label="Cantidad de Acciones"
                     value={orden.cantidadDeAcciones}
                     variant="outlined"/>
-                    <TextField
+                <TextField
                     disabled
                     id="precio"
                     label="Precio"
                     value={orden.precio}
                     variant="outlined"/>
-                    <TextField
+                <TextField
                     disabled
                     id="creacion"
                     label="Fecha de Creación"
                     value={orden.fechaDeCreacion}
                     variant="outlined"/>
-                    <TextField 
+                <TextField 
                     disabled 
                     id="vencimiento" 
                     label="Fecha de Vencimiento" 
