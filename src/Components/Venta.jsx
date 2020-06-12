@@ -19,7 +19,7 @@ export default function Venta() {
             <Form>
                 <InputGroup className="mb-3">
                   <InputGroup.Prepend>
-                    <InputGroup.Text><i class="fas fa-chart-line"></i></InputGroup.Text>
+                    <InputGroup.Text><i className="fas fa-chart-line"/></InputGroup.Text>
                   </InputGroup.Prepend>
                     <Form.Control type="number"
                                 className= {cantidadClass}
@@ -49,7 +49,7 @@ export default function Venta() {
                 </InputGroup>
 
                 <InputGroup className="mb-3">
-                  <Button variant="primary" onClick={ev => sent()}>
+                  <Button variant="primary" onClick={() => sent()}>
                     Cargar
                   </Button>
                 </InputGroup>
@@ -94,13 +94,13 @@ export default function Venta() {
             cantidadDeAcciones : cantidad,
             precio : precio,
             fechaDeVencimiento : vencimiento
-        }).then((response) => {
+        }).then(() => {
             setAlert({
                 show: true,
                 variant: "success",
                 message: "Orden cargada correctamente"
             })
-        }).catch((error) => {
+        }).catch(() => {
             setAlert({
                 show: true,
                 variant: "danger",
@@ -108,7 +108,6 @@ export default function Venta() {
             })
         })
     }
-
 }
 
 

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import OrdenesDeVentaTable from './OrdenesDeVentaTable';
 import Venta from './Venta';
 import '../App.css';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { Button } from '@material-ui/core';
 
 export default function OrdenesDeVenta()  {
 
@@ -23,7 +24,7 @@ return (
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
                         <OrdenesDeVentaTable/>
-                          <Button variant="primary" onClick={handleShow}>
+                          <Button variant = "contained" color="primary" onClick={handleShow}>
                             Cargar nueva
                           </Button>
                     </div>
