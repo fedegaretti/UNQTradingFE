@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {comprarAcciones, findOrdenDeVenta} from '../Service/RestService'
+import {comprarAcciones, findOrdenDeVenta} from '../../Service/RestService'
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button} from '@material-ui/core';
 import { Alert, AlertTitle } from '@material-ui/lab';

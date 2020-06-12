@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {comprarAcciones, findOrdenDeVenta} from '../Service/RestService'
+import {comprarAcciones, findOrdenDeVenta} from '../../Service/RestService'
 import { Dialog, Button, DialogTitle, DialogContent} from '@material-ui/core';
-import OrdenDeVentaCompraForm from './OrdenDeVentaCompraForm'
+import OrdenDeVentaCompraForm from './ComprarAccionesForm'
 
 export default function OrdenDeVentaButton() {
     const handleShow = () => setShow(true);
