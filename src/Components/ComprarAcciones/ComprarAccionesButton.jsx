@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import { Dialog, Button, DialogTitle, DialogContent} from '@material-ui/core';
-import OrdenDeVentaCompraForm from './ComprarAccionesForm'
+import ComprarAccionesForm from './ComprarAccionesForm'
 
-export default function OrdenDeVentaButton() {
+export default function ComprarAccionesButton() {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
     const [show, setShow] = useState(false);
-    const body = (<OrdenDeVentaCompraForm/>)
+    const body = (<ComprarAccionesForm/>)
 
     return (
         <div className="container justify-content-center mt-2">

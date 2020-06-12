@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   
-export default function OrdenDeVentaCompraForm() {
+export default function ComprarAccionesForm() {
     const [orden, setOrden] = useState('')
     const [alert, setAlert] = useState({show: false, variant: "danger", message: '', icon: false});
     const classes = useStyles();
