@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import {comprarAcciones, findOrdenDeVenta} from '../../Service/RestService'
+import React, {useState} from 'react';
 import { Dialog, Button, DialogTitle, DialogContent} from '@material-ui/core';
 import OrdenDeVentaCompraForm from './ComprarAccionesForm'
 
