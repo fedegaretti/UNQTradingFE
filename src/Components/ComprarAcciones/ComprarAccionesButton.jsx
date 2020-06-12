@@ -17,10 +17,7 @@ export default function OrdenDeVentaButton() {
              <Dialog 
                 color= "primary"
                 open={show}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
+                onClose={handleClose}>
                 <DialogTitle id="form-dialog-title">Comprar Acciones</DialogTitle>
                 <DialogContent>
                     {body}
