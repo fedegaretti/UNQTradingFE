@@ -1,30 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import {comprarAcciones, findOrdenDeVenta} from '../../Service/RestService'
+import React, { useState, useEffect } from 'react';
+import { comprarAcciones, findOrdenDeVenta } from '../../Service/RestService'
 import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Button} from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
     },
-  }));
+}));
 
-  
+
 export default function ComprarAccionesForm(props) {
     const [orden, setOrden] = useState('')
-    const [alert, setAlert] = useState({show: false, variant: "danger", message: '', icon: false});
+    const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const [accept, setAccept] = useState(false)
 
     const classes = useStyles();
     useEffect(() => {
         findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
     }, [])
-    
+
     function handleAccept(event) {
         setAccept(event.target.checked)
     }
@@ -33,21 +33,21 @@ export default function ComprarAccionesForm(props) {
         ev.preventDefault()
         if (accept) {
             comprarAcciones(props.ordenId, ordenId)
-            .then((response) => {
-                setAlert({
-                    show: true,
-                    variant: "filled",
-                    severity: "success",
-                    message: "Acciones compradas correctamente!"
+                .then((response) => {
+                    setAlert({
+                        show: true,
+                        variant: "filled",
+                        severity: "success",
+                        message: "Acciones compradas correctamente!"
+                    })
+                }).catch((error) => {
+                    setAlert({
+                        show: true,
+                        severity: "error",
+                        variant: "filled",
+                        message: error.response.data.message
+                    })
                 })
-            }).catch((error) => {
-                setAlert({
-                    show: true,
-                    severity: "error",
-                    variant: "filled",
-                    message: error.response.data.message
-                })
-            })
         } else {
             setAlert({
                 show: true,
@@ -66,43 +66,43 @@ export default function ComprarAccionesForm(props) {
                     id="nombre"
                     label="Nombre Empresa"
                     value={orden.nombreEmpresa}
-                    variant="outlined"/>
+                    variant="outlined" />
                 <TextField
                     disabled
                     id="cantidad"
                     label="Cantidad de Acciones"
                     value={orden.cantidadDeAcciones}
-                    variant="outlined"/>
+                    variant="outlined" />
                 <TextField
                     disabled
                     id="precio"
                     label="Precio"
                     value={orden.precio}
-                    variant="outlined"/>
+                    variant="outlined" />
                 <TextField
                     disabled
                     id="creacion"
                     label="Fecha de Creación"
                     value={orden.fechaDeCreacion}
-                    variant="outlined"/>
-                <TextField 
-                    disabled 
-                    id="vencimiento" 
-                    label="Fecha de Vencimiento" 
-                    value={orden.fechaDeVencimiento} 
-                    variant="outlined"/>
+                    variant="outlined" />
+                <TextField
+                    disabled
+                    id="vencimiento"
+                    label="Fecha de Vencimiento"
+                    value={orden.fechaDeVencimiento}
+                    variant="outlined" />
             </form>
             <FormControlLabel className="p-2"
                 control={<Checkbox checked={accept} onChange={event => handleAccept(event)} />}
-                label="Acepto los terminos y condiciones"/>
-          <div>
-          </div>
+                label="Acepto los terminos y condiciones" />
             <div>
-                <Button className="p-2 ml-1" variant= "contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
+            </div>
+            <div>
+                <Button className="p-2 ml-1" variant="contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
                     Comprar
                 </Button>
             </div>
-            <Alert className= "mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
+            <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
                 {alert.message}
             </Alert>
         </div>
