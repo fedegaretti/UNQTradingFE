@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   
-export default function ComprarAccionesForm() {
+export default function ComprarAccionesForm(props) {
     const [orden, setOrden] = useState('')
     const [alert, setAlert] = useState({show: false, variant: "danger", message: '', icon: false});
     const [accept, setAccept] = useState(false)
 
     const classes = useStyles();
     useEffect(() => {
-        findOrdenDeVenta(1).then(response => setOrden(response.data))
+        findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
     }, [])
     
     function handleAccept(event) {
@@ -31,7 +31,7 @@ export default function ComprarAccionesForm() {
     function comprar(ev, ordenId) {
         ev.preventDefault()
         if (accept) {
-            comprarAcciones(1, ordenId)
+            comprarAcciones(props.ordenId, ordenId)
             .then((response) => {
                 setAlert({
                     show: true,

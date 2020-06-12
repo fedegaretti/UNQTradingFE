@@ -6,7 +6,7 @@ export default function ComprarAccionesButton() {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
     const [show, setShow] = useState(false);
-    const body = (<ComprarAccionesForm/>)
+    const body = (<ComprarAccionesForm ordenId={1}/>)
 
     return (
         <div className="container justify-content-center mt-2">
