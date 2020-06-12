@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import { Dialog, Button, DialogTitle, DialogContent} from '@material-ui/core';
+import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import ComprarAccionesForm from './ComprarAccionesForm'
+import Draggable from 'react-draggable';
 
 export default function ComprarAccionesButton(props) {
     const handleShow = () => setShow(true);
@@ -10,22 +12,34 @@ export default function ComprarAccionesButton(props) {
     const body = (<ComprarAccionesForm ordenId={1}/>)
 
     return (
-        <div className="container justify-content-center mt-2">
-           <Button variant= "contained" color="primary" onClick={handleShow}>
+        <div>
+            <Button variant= "contained" color="primary" onClick={handleShow}>
                  Comprar
-             </Button>
-             <Dialog 
+            </Button>
+            <Dialog 
                 color= "primary"
                 open={show}
-                onClose={handleClose}>
-                <DialogTitle id="form-dialog-title">Comprar Acciones</DialogTitle>
+                onClose={handleClose}
+                PaperComponent={PaperDraggable}>
+                <DialogTitle disableTypography style={{ cursor: 'move', display:'flex', 
+                    justifyContent: 'space-between', alignItems: 'center' }} id="draggable-dialog-title">
+                    <h3>Comprar Acciones</h3>
+                <IconButton onClick={handleClose}>
+                    <CloseIcon/>
+                </IconButton>
+                </DialogTitle>
                 <DialogContent>
                     {body}
                 </DialogContent>
             </Dialog>
         </div>
-    )
+    );
 }
 
-
-
+function PaperDraggable(props) {
+    return (
+      <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
+        <Paper {...props} />
+      </Draggable>
+    );
+}
