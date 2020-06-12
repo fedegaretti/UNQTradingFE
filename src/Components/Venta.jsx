@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import '../App.css';
 import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
 import {saveOrdenDeVenta} from '../Service/RestService'
-import OrdenesDeVenta from "./OrdenesDeVenta";
 
 
 export default function Venta() {
