@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
-import OrdenesDeVenta from './Components/OrdenesDeVenta.jsx'
+import OrdenesDeVenta from './Components/OrdenesDeVenta/OrdenesDeVenta.jsx'
 import ComprarAcciones from './Components/ComprarAcciones/ComprarAcciones.jsx'
 import StickyFooter from './Components/Footer/Footer.jsx';
 import Acciones from './Components/Usuario/Acciones.jsx';

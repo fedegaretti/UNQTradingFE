@@ -8,7 +8,8 @@ export const properties = {
         comprar: "Comprar",
         aceptarTerminos: "Acepto los terminos y Condiciones",
         comprarAcciones:"Comprar Acciones",
-        cerrar: "Cerrar"
+        cerrar: "Cerrar",
+        cargar: "Cargar"
     }
 
 }
