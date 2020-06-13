@@ -3,6 +3,7 @@ import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@
 import CloseIcon from '@material-ui/icons/Close';
 import ComprarAccionesForm from './ComprarAccionesForm'
 import Draggable from 'react-draggable';
+import {properties} from "../../Properties/properties.js"
 
 export default function ComprarAccionesButton(props) {
     const handleShow = () => setShow(true);
@@ -14,7 +15,7 @@ export default function ComprarAccionesButton(props) {
     return (
         <div>
             <Button variant="contained" color="primary" onClick={handleShow}>
-                Comprar
+                {properties.labels.comprar}
             </Button>
             <Dialog
                 color="primary"
@@ -25,7 +26,7 @@ export default function ComprarAccionesButton(props) {
                     cursor: 'move', display: 'flex',
                     justifyContent: 'space-between', alignItems: 'center'
                 }} id="draggable-dialog-title">
-                    <h3>Comprar Acciones</h3>
+                    <h3>{properties.labels.comprarAcciones}</h3>
                     <IconButton onClick={handleClose}>
                         <CloseIcon />
                     </IconButton>

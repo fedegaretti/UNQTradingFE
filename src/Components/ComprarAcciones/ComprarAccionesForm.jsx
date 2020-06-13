@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
+import {properties} from "../../Properties/properties.js"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -103,13 +104,13 @@ export default function ComprarAccionesForm(props) {
             <FormControlLabel className="p-2"
                 control={<Checkbox checked={accept} onChange={event => handleAccept(event)}/>}
                 label={<Button style= {{ textTransform:'none'}} value="justify" onClick={handleShow()}>
-                            Acepto los terminos y Condiciones
+                            {properties.labels.aceptarTerminos}
                         </Button>}/>
             <div>
             </div>
             <div>
                 <Button className="p-2 ml-1" variant="contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
-                    Comprar
+                    {properties.labels.comprar}
                 </Button>
             </div>
             <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
@@ -119,19 +120,16 @@ export default function ComprarAccionesForm(props) {
                 open={show}
                 onClose={handleClose}
                 scroll="body">
-                <DialogTitle id="scroll-dialog-title">Terminos y Condiciones</DialogTitle>
+                <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
                 <DialogContent dividers={true}>
                     <DialogContentText
                         id="scroll-dialog-description">
-                            Cras mattis consectetur purus sit amet fermentum.
-                            Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-                            Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+                            {properties.labels.terminosDetalle}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Cerrar
+                        {properties.labels.cerrar}
                     </Button>
                 </DialogActions>
             </Dialog>
