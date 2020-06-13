@@ -1,14 +1,12 @@
 import React from 'react';
 import AccionesTable from './AccionesTable';
+import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function Acciones()  {
 
-return (
-     <div>
-            <div className="d-flex justify-content-center mb-4">
-                <h3 className="text-dark">Mis acciones</h3>
-            </div>
-           
+    return (
+        <div>
+            <NavigationBar name={"Mis acciones"}/>
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
@@ -16,6 +14,6 @@ return (
                     </div>
                 </div>
             </div>
-         </div>
-        );
-    }
+        </div>
+    );
+}

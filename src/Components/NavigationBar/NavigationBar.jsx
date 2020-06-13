@@ -18,6 +18,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 import {Link} from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 const drawerWidth = 240;
 
@@ -142,12 +143,16 @@ export default function NavigationBar(props) {
                 </div>
                 <Divider />
                 <MenuList>
+                    <MenuItem component={Link} to='/acciones'>
+                        <ListItemIcon><AccountBalanceIcon color="primary"/></ListItemIcon>
+                        <ListItemText primary="Mis acciones"/>
+                    </MenuItem>
                     <MenuItem component={Link} to='/comprar'>
-                        <ListItemIcon><AttachMoneyIcon/></ListItemIcon>
+                        <ListItemIcon><AttachMoneyIcon color="primary"/></ListItemIcon>
                         <ListItemText primary="Comprar acciones"/>
                     </MenuItem>
                     <MenuItem component={Link} to='/ordenesVenta'>
-                        <ListItemIcon><InsertChartIcon/></ListItemIcon>
+                        <ListItemIcon><InsertChartIcon color="primary"/></ListItemIcon>
                         <ListItemText primary="Ordenes de venta"/>
                     </MenuItem>
                 </MenuList>

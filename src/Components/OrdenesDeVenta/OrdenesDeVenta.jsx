@@ -4,6 +4,8 @@ import OrdenDeVentaForm from './OrdenDeVentaForm';
 import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@material-ui/core';
 import Draggable from 'react-draggable';
 import CloseIcon from '@material-ui/icons/Close';
+import NavigationBar from "../NavigationBar/NavigationBar";
+import StickyFooter from "../Footer/Footer";
 export default function OrdenesDeVenta()  {
 
     const [show, setShow] = useState(false);
@@ -15,10 +17,7 @@ export default function OrdenesDeVenta()  {
 
 return (
      <div className="App">
-            <div className="d-flex justify-content-center mb-4">
-                <h3 className="text-dark"> Ordenes de Venta</h3>
-            </div>
-           
+            <NavigationBar name={"Ordenes de Venta"}/>
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
