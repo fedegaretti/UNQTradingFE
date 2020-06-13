@@ -5,6 +5,7 @@ const ORDENES_DE_VENTA ="/venta/all?nombreEmpresa="
 const SAVE_ORDEN_VENTA = "/venta/save"
 const COMPRAR_ACCIONES = "/usuario/buy?"
 const FIND_ORDEN_DE_VENTA = "/venta/find?ordenId="
+const FIND_ORDENES_DE_VENTA = "/venta/ordenes"
 
 export const RestService = {
     GET: {
@@ -13,6 +14,9 @@ export const RestService = {
         },
         findOrdenesDeVentaByEmpresa: function(nombreEmpresa) {
             return axios.get(API_URL + ORDENES_DE_VENTA + nombreEmpresa)
+        },
+        findAllOrdenesDeVenta : function(){
+            return axios.get(API_URL + FIND_ORDENES_DE_VENTA )
         }
     },
     POST: {
