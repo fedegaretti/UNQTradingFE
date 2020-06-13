@@ -1,7 +1,7 @@
 import React from 'react';
 import AccionesTable from './AccionesTable';
 
-export default function OrdenesDeVenta()  {
+export default function Acciones()  {
 
 return (
      <div>
