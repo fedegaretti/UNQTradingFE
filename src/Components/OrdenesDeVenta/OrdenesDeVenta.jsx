@@ -5,7 +5,6 @@ import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@
 import Draggable from 'react-draggable';
 import CloseIcon from '@material-ui/icons/Close';
 import NavigationBar from "../NavigationBar/NavigationBar";
-import StickyFooter from "../Footer/Footer";
 export default function OrdenesDeVenta()  {
 
     const [show, setShow] = useState(false);

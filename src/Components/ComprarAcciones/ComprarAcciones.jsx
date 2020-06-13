@@ -1,7 +1,6 @@
 import React from 'react';
 import ComprarAccionesTable from './ComprarAccionesTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
-import StickyFooter from "../Footer/Footer";
 
 export default function ComprarAcciones()  {
 
