@@ -20,11 +20,10 @@ export default function ComprarAccionesForm(props) {
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-
     const classes = useStyles();
     useEffect(() => {
         findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
-    }, [])
+    }, [props.ordenId])
 
     function handleAccept(event) {
         setAccept(event.target.checked)
