@@ -41,8 +41,8 @@ export default function ComprarAccionesForm(props) {
     function comprar(ev, ordenId) {
         ev.preventDefault()
         if (accept) {
-            RestService.POST.comprarAcciones(props.ordenId, ordenId)
-                .then((response) => {
+            RestService.POST.comprarAcciones(props.ordenId, props.usuarioId)
+                .then(() => {
                     setAlert({
                         show: true,
                         variant: "filled",
