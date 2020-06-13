@@ -14,7 +14,7 @@ export const RestService = {
         },
         findOrdenesDeVentaByEmpresa: function(nombreEmpresa) {
             return axios.get(API_URL + ORDENES_DE_VENTA + nombreEmpresa)
-        }
+        },
         findAccionesByUser: function(userId) {
             return axios.get(API_URL + FIND_ACCIONES + userId)
         }
