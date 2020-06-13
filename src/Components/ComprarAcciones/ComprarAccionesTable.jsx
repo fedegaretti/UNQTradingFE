@@ -1,23 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {RestService} from '../Service/RestService'
-import {Paper} from "@material-ui/core";
-import TableRow from "@material-ui/core/TableRow";
-import TableBody from "@material-ui/core/TableBody";
-import TableHead from "@material-ui/core/TableHead";
-import Table from "@material-ui/core/Table";
-import TableContainer from "@material-ui/core/TableContainer";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import useTheme from "@material-ui/core/styles/useTheme";
-import IconButton from "@material-ui/core/IconButton";
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
+import {RestService} from '../../Service/RestService'
+import {Paper, TableRow, TableBody, TableHead, Table, TableContainer, makeStyles,
+IconButton, TablePagination, TableFooter, TableCell, withStyles, useTheme} from "@material-ui/core";
+import {FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage} from "@material-ui/icons";
 import PropTypes from "prop-types";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableFooter from "@material-ui/core/TableFooter";
-import TableCell from "@material-ui/core/TableCell";
-import withStyles from "@material-ui/core/styles/withStyles";
+import ComprarAccionesButton from './ComprarAccionesButton';
 import blue from "@material-ui/core/colors/blue";
 
 const useStyles1 = makeStyles((theme) => ({
@@ -73,7 +60,7 @@ function TablePaginationActions(props) {
                 disabled={page === 0}
                 aria-label="first page"
             >
-                {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+                {theme.direction === 'rtl' ? <LastPage /> : <FirstPage />}
             </IconButton>
             <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
                 {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
@@ -90,7 +77,7 @@ function TablePaginationActions(props) {
                 disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                 aria-label="last page"
             >
-                {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+                {theme.direction === 'rtl' ? <FirstPage /> : <LastPage />}
             </IconButton>
         </div>
     );
@@ -109,7 +96,7 @@ const useStyles2 = makeStyles({
     },
 });
 
-export default function OrdenesDeVentaTable() {
+export default function ComprarAccionesTable() {
     const [ordenes, handleOrdenes] = useState([])
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
@@ -126,7 +113,7 @@ export default function OrdenesDeVentaTable() {
     };
 
     useEffect(() => {
-        RestService.GET.findOrdenesDeVentaByEmpresa("UNQ")
+        RestService.GET.findAllOrdenesDeVenta()
             .then(response => handleOrdenes(response.data))
     }, [])
 
@@ -138,8 +125,9 @@ export default function OrdenesDeVentaTable() {
                          <TableRow>
                              <StyledTableCell align="center">Cantidad de acciones</StyledTableCell>
                              <StyledTableCell align="center">Precio</StyledTableCell>
-                             <StyledTableCell align="center">Fecha Creación</StyledTableCell>
                              <StyledTableCell align="center">Fecha Vencimiento</StyledTableCell>
+                             <StyledTableCell align="center">Empresa</StyledTableCell>
+                             <StyledTableCell align="center"></StyledTableCell>
                          </TableRow>
                      </TableHead>
                      <TableBody>
@@ -180,8 +168,9 @@ export default function OrdenesDeVentaTable() {
                 <StyledTableRow>
                     <StyledTableCell align="center">{row.cantidadDeAcciones}</StyledTableCell>
                     <StyledTableCell align="center">{row.precio}</StyledTableCell>
-                    <StyledTableCell align="center">{row.fechaDeCreacion}</StyledTableCell>
                     <StyledTableCell align="center">{row.fechaDeVencimiento}</StyledTableCell>
+                    <StyledTableCell align="center">{row.nombreEmpresa}</StyledTableCell>
+                    <StyledTableCell aling="center">{<ComprarAccionesButton ordenId={row.id} usuarioId={1}/>}</StyledTableCell>
                 </StyledTableRow>
         ))
     }
