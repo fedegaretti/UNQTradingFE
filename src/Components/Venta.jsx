@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../App.css';
 import { Button, Form, InputGroup, Alert } from 'react-bootstrap';
-import {saveOrdenDeVenta} from '../Service/RestService'
+import {RestService} from '../Service/RestService'
 
 
 export default function Venta() {
@@ -89,7 +89,7 @@ export default function Venta() {
     }
 
     function sent() {
-        saveOrdenDeVenta({
+        RestService.POST.saveOrdenDeVenta({
             nombreEmpresa : "UNQ",
             cantidadDeAcciones : cantidad,
             precio : precio,

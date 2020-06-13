@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { comprarAcciones, findOrdenDeVenta } from '../../Service/RestService'
+import { comprarAcciones, RestService } from '../../Service/RestService'
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
@@ -23,7 +23,7 @@ export default function ComprarAccionesForm(props) {
     const [show, setShow] = useState(false)
     const classes = useStyles();
     useEffect(() => {
-        findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
+        RestService.GET.findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
     }, [props.ordenId])
 
     function handleAccept(event) {
@@ -34,14 +34,14 @@ export default function ComprarAccionesForm(props) {
         setShow(true);
       };
     
-      const handleClose = () => {
-        setShow(false);
-      };
+    const handleClose = () => {
+    setShow(false);
+    };
 
     function comprar(ev, ordenId) {
         ev.preventDefault()
         if (accept) {
-            comprarAcciones(props.ordenId, ordenId)
+            RestService.POST.comprarAcciones(props.ordenId, ordenId)
                 .then((response) => {
                     setAlert({
                         show: true,
