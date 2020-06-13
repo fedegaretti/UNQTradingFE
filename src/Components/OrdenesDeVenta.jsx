@@ -4,6 +4,7 @@ import Venta from './Venta';
 import '../App.css';
 import { Modal } from 'react-bootstrap';
 import { Button } from '@material-ui/core';
+import NavigationBar from "./NavigationBar/NavigationBar";
 
 export default function OrdenesDeVenta()  {
 
@@ -16,10 +17,7 @@ export default function OrdenesDeVenta()  {
 
 return (
      <div className="App">
-            <div className="d-flex justify-content-center mb-4">
-                <h3 className="text-dark"> Ordenes de Venta</h3>
-            </div>
-           
+            <NavigationBar name={"Ordenes de Venta"}/>
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
