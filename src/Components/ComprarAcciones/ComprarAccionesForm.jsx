@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { comprarAcciones, RestService } from '../../Service/RestService'
+import { RestService } from '../../Service/RestService'
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
