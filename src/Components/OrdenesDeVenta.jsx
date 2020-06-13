@@ -24,7 +24,7 @@ return (
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
                         <OrdenesDeVentaTable/>
-                          <Button className="mt-2" variant = "contained" color="primary" onClick={handleShow}>
+                          <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={handleShow}>
                             Cargar nueva
                           </Button>
                     </div>
