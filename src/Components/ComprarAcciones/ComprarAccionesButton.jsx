@@ -3,18 +3,19 @@ import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@
 import CloseIcon from '@material-ui/icons/Close';
 import ComprarAccionesForm from './ComprarAccionesForm'
 import Draggable from 'react-draggable';
+import {properties} from "../../Properties/properties.js"
 
 export default function ComprarAccionesButton(props) {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
     const [show, setShow] = useState(false);
-    // hardcodeada la orden, cuando se implementa con la lista se pasa por props
-    const body = (<ComprarAccionesForm ordenId={1} />)
+    // hardcodeada la orden y el usuario, cuando se implementa con la lista se pasa por props
+    const body = (<ComprarAccionesForm ordenId={1} usuarioId={1} />)
 
     return (
         <div>
             <Button variant="contained" color="primary" onClick={handleShow}>
-                Comprar
+                {properties.labels.comprar}
             </Button>
             <Dialog
                 color="primary"
@@ -25,7 +26,7 @@ export default function ComprarAccionesButton(props) {
                     cursor: 'move', display: 'flex',
                     justifyContent: 'space-between', alignItems: 'center'
                 }} id="draggable-dialog-title">
-                    <h3>Comprar Acciones</h3>
+                    <h3>{properties.labels.comprarAcciones}</h3>
                     <IconButton onClick={handleClose}>
                         <CloseIcon />
                     </IconButton>

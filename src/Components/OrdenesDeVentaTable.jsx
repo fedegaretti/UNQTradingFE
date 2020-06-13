@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {findOrdenesDeVentaByEmpresa} from '../Service/RestService'
+import {RestService} from '../Service/RestService'
 import {Paper} from "@material-ui/core";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
@@ -126,7 +126,7 @@ export default function OrdenesDeVentaTable() {
     };
 
     useEffect(() => {
-        findOrdenesDeVentaByEmpresa("UNQ")
+        RestService.GET.findOrdenesDeVentaByEmpresa("UNQ")
             .then(response => handleOrdenes(response.data))
     }, [])
 
