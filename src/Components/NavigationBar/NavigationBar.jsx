@@ -172,6 +172,10 @@ export default function NavigationBar(props) {
                     {menuItems()}
                 </MenuList>
             </Drawer>
+            <main className={classes.content}>
+                <div className={classes.toolbar} />
+                {props.content}
+            </main>
         </div>
     );
 }

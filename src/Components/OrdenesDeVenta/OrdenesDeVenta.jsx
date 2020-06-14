@@ -13,24 +13,28 @@ export default function OrdenesDeVenta()  {
       window.location.reload(false)
     };
     const handleShow = () => setShow(true);
+    const content = () => {
+        return (
+            <div className="container">
+                <div className="row align-items-center pt-5">
+                    <div className="col-sm pt-5">
+                        <OrdenesDeVentaTable/>
+                        <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={handleShow}>
+                            Cargar nueva
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
 return (
      <div className="App">
             <NavigationBar
                 name={"Ordenes de Venta"}
                 isUser={false}
+                content={content()}
             />
-            <div className="container">
-                <div className="row align-items-center pt-5">
-                    <div className="col-sm pt-5">
-                        <OrdenesDeVentaTable/>
-                          <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={handleShow}>
-                            Cargar nueva
-                          </Button>
-                    </div>
-                </div>
-
-            </div>
             <Dialog
                 color="primary"
                 open={show}
