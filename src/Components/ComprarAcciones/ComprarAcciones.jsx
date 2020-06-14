@@ -6,7 +6,10 @@ export default function ComprarAcciones()  {
 
     return (
         <div>
-            <NavigationBar name={"Comprar acciones"}/>
+            <NavigationBar
+                name={"Comprar acciones"}
+                isUser={true}
+            />
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">

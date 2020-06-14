@@ -6,7 +6,10 @@ export default function Acciones()  {
 
     return (
         <div>
-            <NavigationBar name={"Mis acciones"}/>
+            <NavigationBar
+                name={"Mis acciones"}
+                isUser={true}
+            />
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">

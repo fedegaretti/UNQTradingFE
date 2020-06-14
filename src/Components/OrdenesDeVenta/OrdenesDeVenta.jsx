@@ -16,7 +16,10 @@ export default function OrdenesDeVenta()  {
 
 return (
      <div className="App">
-            <NavigationBar name={"Ordenes de Venta"}/>
+            <NavigationBar
+                name={"Ordenes de Venta"}
+                isUser={false}
+            />
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">

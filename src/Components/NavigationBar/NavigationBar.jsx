@@ -19,6 +19,7 @@ import InsertChartIcon from '@material-ui/icons/InsertChart';
 import {Link} from "react-router-dom";
 import MenuItem from "@material-ui/core/MenuItem";
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import {properties} from "../../Properties/properties";
 
 const drawerWidth = 240;
 
@@ -88,6 +89,31 @@ export default function NavigationBar(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const usuario = [properties.misAcciones, properties.comprarAcciones];
+    const empresa = [properties.ordenesVenta];
+    const menu = props.isUser ? usuario : empresa;
+
+    function getIcon(text) {
+        switch (text) {
+            case 'AccountBalanceIcon':
+                return <AccountBalanceIcon color="primary"/>;
+            case 'AttachMoneyIcon':
+                return <AttachMoneyIcon color="primary"/>;
+            case 'InsertChartIcon':
+                return <InsertChartIcon color="primary"/>;
+            default:
+                return;
+        }
+    }
+
+    function menuItems() {
+        return menu.map(prop => (
+            <MenuItem component={Link} to={prop.path}>
+                <ListItemIcon>{getIcon(prop.icon)}</ListItemIcon>
+                <ListItemText primary={prop.text}/>
+            </MenuItem>
+        ))
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -143,18 +169,7 @@ export default function NavigationBar(props) {
                 </div>
                 <Divider />
                 <MenuList>
-                    <MenuItem component={Link} to='/acciones'>
-                        <ListItemIcon><AccountBalanceIcon color="primary"/></ListItemIcon>
-                        <ListItemText primary="Mis acciones"/>
-                    </MenuItem>
-                    <MenuItem component={Link} to='/comprar'>
-                        <ListItemIcon><AttachMoneyIcon color="primary"/></ListItemIcon>
-                        <ListItemText primary="Comprar acciones"/>
-                    </MenuItem>
-                    <MenuItem component={Link} to='/ordenesVenta'>
-                        <ListItemIcon><InsertChartIcon color="primary"/></ListItemIcon>
-                        <ListItemText primary="Ordenes de venta"/>
-                    </MenuItem>
+                    {menuItems()}
                 </MenuList>
             </Drawer>
         </div>
