@@ -1,5 +1,10 @@
 @import url('../node_modules/@fortawesome/fontawesome-free/css/all.css');
 
+.App {
+  flex: 1 0 auto;
+  padding: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

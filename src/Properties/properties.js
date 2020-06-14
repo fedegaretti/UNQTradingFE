@@ -10,6 +10,20 @@ export const properties = {
         comprarAcciones:"Comprar Acciones",
         cerrar: "Cerrar",
         cargar: "Cargar"
+    },
+    misAcciones: {
+        path: '/acciones',
+        icon: 'AccountBalanceIcon',
+        text: 'Mis acciones'
+    },
+    comprarAcciones: {
+        path: '/comprar',
+        icon: 'AttachMoneyIcon',
+        text: 'Comprar acciones'
+    },
+    ordenesVenta: {
+        path: '/ordenesVenta',
+        icon: 'InsertChartIcon',
+        text: 'Ordenes de venta'
     }
-
 }

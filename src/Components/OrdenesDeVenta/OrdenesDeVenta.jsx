@@ -4,6 +4,7 @@ import OrdenDeVentaForm from './OrdenDeVentaForm';
 import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@material-ui/core';
 import Draggable from 'react-draggable';
 import CloseIcon from '@material-ui/icons/Close';
+import NavigationBar from "../NavigationBar/NavigationBar";
 export default function OrdenesDeVenta()  {
 
     const [show, setShow] = useState(false);
@@ -12,24 +13,28 @@ export default function OrdenesDeVenta()  {
       window.location.reload(false)
     };
     const handleShow = () => setShow(true);
-
-return (
-     <div className="App">
-            <div className="d-flex justify-content-center mb-4">
-                <h3 className="text-dark"> Ordenes de Venta</h3>
-            </div>
-           
+    const content = () => {
+        return (
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
                         <OrdenesDeVentaTable/>
-                          <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={handleShow}>
+                        <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={handleShow}>
                             Cargar nueva
-                          </Button>
+                        </Button>
                     </div>
                 </div>
-
             </div>
+        );
+    }
+
+return (
+     <div className="App">
+            <NavigationBar
+                name={"Ordenes de Venta"}
+                isUser={false}
+                content={content()}
+            />
             <Dialog
                 color="primary"
                 open={show}
