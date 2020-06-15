@@ -15,18 +15,6 @@ export default function OrdenDeVentaForm() {
     const [show, setShow] = useState(false)
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
-    
-    function handleAccept(event) {
-        setAccept(event.target.checked)
-    }
-
-    const handleShow = () => () => {
-        setShow(true);
-      };
-    
-    const handleClose = () => {
-    setShow(false);
-    };
 
     return (
         <div>
@@ -57,8 +45,8 @@ export default function OrdenDeVentaForm() {
                     onChange={e => setVencimiento(e.target.value)}/>
             </form>
             <FormControlLabel className="p-2"
-                control={<Checkbox checked={accept} onChange={event => handleAccept(event)}/>}
-                label={<Button style= {{ textTransform:'none'}} value="justify" onClick={handleShow()}>
+                control={<Checkbox checked={accept} onChange={event => setAccept(event.target.checked)}/>}
+                label={<Button style= {{ textTransform:'none'}} value="justify" onClick={() => setShow(true)}>
                             {properties.labels.aceptarTerminos}
                         </Button>}/>
             <div>
@@ -73,7 +61,7 @@ export default function OrdenDeVentaForm() {
             </Alert>
             <Dialog
                 open={show}
-                onClose={handleClose}
+                onClose={() => setShow(false)}
                 scroll="body">
                 <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
                 <DialogContent dividers={true}>
@@ -83,7 +71,7 @@ export default function OrdenDeVentaForm() {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={() => setShow(false)} color="primary">
                         {properties.labels.cerrar}
                     </Button>
                 </DialogActions>

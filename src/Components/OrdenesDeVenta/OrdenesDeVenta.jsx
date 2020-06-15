@@ -13,14 +13,14 @@ export default function OrdenesDeVenta()  {
       setShow(false)
       window.location.reload(false)
     };
-    const handleShow = () => setShow(true);
+    
     const content = () => {
         return (
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
                         <OrdenesDeVentaTable/>
-                        <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={handleShow}>
+                        <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={() => setShow(true)}>
                             Cargar nueva
                         </Button>
                     </div>
