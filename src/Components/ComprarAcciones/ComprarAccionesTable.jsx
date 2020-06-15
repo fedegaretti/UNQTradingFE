@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {RestService} from '../../Service/RestService'
-import {Paper, TableRow, TableBody, TableHead, Table, TableContainer, makeStyles,
-IconButton, TablePagination, TableFooter, TableCell, withStyles, useTheme} from "@material-ui/core";
-import {FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage} from "@material-ui/icons";
-import PropTypes from "prop-types";
+import {Paper, TableRow, TableBody, TableHead, Table, TableContainer, TablePagination, TableFooter} from "@material-ui/core";
 import ComprarAccionesButton from './ComprarAccionesButton';
-import blue from "@material-ui/core/colors/blue";
 import {TablePaginationActions, useStyles2, StyledTableCell, StyledTableRow } from "../Common/Table.jsx";
 
 export default function ComprarAccionesTable() {

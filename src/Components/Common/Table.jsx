@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React from 'react';
 import TableRow from "@material-ui/core/TableRow";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import useTheme from "@material-ui/core/styles/useTheme";
