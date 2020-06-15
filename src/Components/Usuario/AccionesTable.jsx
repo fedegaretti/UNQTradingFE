@@ -8,13 +8,14 @@ import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableFooter from "@material-ui/core/TableFooter";
-import {TablePaginationActions, useStyles2, StyledTableCell, StyledTableRow } from "../Common/Table.jsx";
+import {TablePaginationActions } from "../Common/Table.jsx";
+import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
 export default function AccionesTable() {
     const [acciones, handleAcciones] = useState([])
     const [pagina, setPagina] = React.useState(0);
     const [accionesPorPagina, setAccionesPorPagina] = React.useState(5);
-    const classes = useStyles2();
+    const classes = tableStyle();
     const emptyRows = accionesPorPagina - Math.min(accionesPorPagina, acciones.length - pagina * accionesPorPagina);
 
     const handleChangePage = (event, newPage) => {

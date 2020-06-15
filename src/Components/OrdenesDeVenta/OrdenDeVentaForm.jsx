@@ -1,19 +1,10 @@
 import React, {useState} from 'react';
 import { RestService } from '../../Service/RestService'
-import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
+import { formStyles } from "../MaterialDesign/Styles"
 
 export default function OrdenDeVentaForm() {
 
@@ -23,7 +14,7 @@ export default function OrdenDeVentaForm() {
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
-    const classes = useStyles();
+    const classes = formStyles();
     
     function handleAccept(event) {
         setAccept(event.target.checked)

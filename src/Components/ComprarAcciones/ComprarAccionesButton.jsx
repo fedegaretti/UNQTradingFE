@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import ComprarAccionesForm from './ComprarAccionesForm'
-import Draggable from 'react-draggable';
 import {properties} from "../../Properties/properties.js"
+import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 
 export default function ComprarAccionesButton(props) {
     const handleShow = () => setShow(true);
@@ -39,10 +39,4 @@ export default function ComprarAccionesButton(props) {
     );
 }
 
-function PaperDraggable(props) {
-    return (
-        <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
-            <Paper {...props} />
-        </Draggable>
-    );
-}
+

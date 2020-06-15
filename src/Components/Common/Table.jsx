@@ -1,6 +1,4 @@
 import React from 'react';
-import TableRow from "@material-ui/core/TableRow";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from '@material-ui/icons/FirstPage';
@@ -8,15 +6,12 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import PropTypes from "prop-types";
-import TableCell from "@material-ui/core/TableCell";
-import withStyles from "@material-ui/core/styles/withStyles";
-import blue from "@material-ui/core/colors/blue";
+import { paginationStyle } from '../MaterialDesign/Styles';
 
 export function TablePaginationActions(props) {
-    const classes = useStyles1();
     const theme = useTheme();
     const { count, page, rowsPerPage, onChangePage } = props;
-
+    const classes = paginationStyle(theme);
     const handleFirstPageButtonClick = (event) => {
         onChangePage(event, 0);
     };
@@ -63,31 +58,6 @@ export function TablePaginationActions(props) {
     );
 }
 
-const useStyles1 = makeStyles((theme) => ({
-    root: {
-        flexShrink: 0,
-        marginLeft: theme.spacing(2.5),
-    },
-}));
-
-export const StyledTableCell = withStyles((theme) => ({
-    head: {
-        backgroundColor: blue["900"],
-        color: theme.palette.common.white,
-    },
-    body: {
-        fontSize: 14,
-    },
-}))(TableCell);
-
-export const StyledTableRow = withStyles((theme) => ({
-    root: {
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
-    },
-}))(TableRow);
-
 TablePaginationActions.propTypes = {
     count: PropTypes.number.isRequired,
     onChangePage: PropTypes.func.isRequired,
@@ -95,8 +65,3 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-export const useStyles2 = makeStyles({
-    table: {
-        minWidth: 500,
-    },
-});

@@ -1,27 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { RestService } from '../../Service/RestService'
-import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import {properties} from "../../Properties/properties.js"
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    },
-}));
-
+import { formStyles } from "../MaterialDesign/Styles"
 
 export default function ComprarAccionesForm(props) {
     const [orden, setOrden] = useState('')
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-    const classes = useStyles();
+    const classes = formStyles();
     useEffect(() => {
         RestService.GET.findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
     }, [props.ordenId])

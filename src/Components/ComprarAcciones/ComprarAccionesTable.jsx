@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {RestService} from '../../Service/RestService'
-import {Paper, TableRow, TableBody, TableHead, Table, TableContainer, TablePagination, TableFooter} from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { RestService} from '../../Service/RestService'
+import { Paper, TableRow, TableBody, TableHead, Table, TableContainer, TablePagination, TableFooter} from "@material-ui/core";
 import ComprarAccionesButton from './ComprarAccionesButton';
-import {TablePaginationActions, useStyles2, StyledTableCell, StyledTableRow } from "../Common/Table.jsx";
+import { TablePaginationActions} from "../Common/Table.jsx";
+import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
 export default function ComprarAccionesTable() {
     const [ordenes, handleOrdenes] = useState([])
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
-    const classes = useStyles2();
+    const classes = tableStyle();
     const emptyRows = ordenesPorPagina - Math.min(ordenesPorPagina, ordenes.length - pagina * ordenesPorPagina);
 
     const handleChangePage = (event, newPage) => {
