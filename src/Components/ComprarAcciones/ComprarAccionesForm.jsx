@@ -16,18 +16,6 @@ export default function ComprarAccionesForm(props) {
         RestService.GET.findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
     }, [props.ordenId])
 
-    function handleAccept(event) {
-        setAccept(event.target.checked)
-    }
-
-    const handleShow = () => () => {
-        setShow(true);
-      };
-    
-    const handleClose = () => {
-    setShow(false);
-    };
-
     function comprar(ev) {
         ev.preventDefault()
         if (accept) {
@@ -92,8 +80,8 @@ export default function ComprarAccionesForm(props) {
                     variant="outlined" />
             </form>
             <FormControlLabel className="p-2"
-                control={<Checkbox checked={accept} onChange={event => handleAccept(event)}/>}
-                label={<Button style= {{ textTransform:'none'}} value="justify" onClick={handleShow()}>
+                control={<Checkbox checked={accept} onChange={event => setAccept(event.target.checked)}/>}
+                label={<Button style= {{ textTransform:'none'}} value="justify" onClick={() => setShow(true)}>
                             {properties.labels.aceptarTerminos}
                         </Button>}/>
             <div>
@@ -108,7 +96,7 @@ export default function ComprarAccionesForm(props) {
             </Alert>
             <Dialog
                 open={show}
-                onClose={handleClose}
+                onClose={() => setShow(false)}
                 scroll="body">
                 <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
                 <DialogContent dividers={true}>
@@ -118,7 +106,7 @@ export default function ComprarAccionesForm(props) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={() => setShow(false)} color="primary">
                         {properties.labels.cerrar}
                     </Button>
                 </DialogActions>
