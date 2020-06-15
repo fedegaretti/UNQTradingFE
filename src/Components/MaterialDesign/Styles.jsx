@@ -43,3 +43,23 @@ export const StyledTableRow = withStyles((theme) => ({
         },
     },
 }))(TableRow);
+
+export const footerStyle = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: 'auto',
+    },
+    main: {
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(2),
+    },
+    footer: {
+      bottom: '0',
+      width: '100%',
+      padding: theme.spacing(3, 2),
+      marginTop: 'auto',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+    },
+  }));
