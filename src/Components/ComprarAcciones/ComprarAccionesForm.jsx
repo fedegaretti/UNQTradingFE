@@ -28,7 +28,7 @@ export default function ComprarAccionesForm(props) {
     setShow(false);
     };
 
-    function comprar(ev, ordenId) {
+    function comprar(ev) {
         ev.preventDefault()
         if (accept) {
             RestService.POST.comprarAcciones(props.ordenId, props.usuarioId)
@@ -99,7 +99,7 @@ export default function ComprarAccionesForm(props) {
             <div>
             </div>
             <div>
-                <Button className="p-2 ml-1" variant="contained" color="primary" onClick={ev => comprar(ev, orden.id)}>
+                <Button className="p-2 ml-1" variant="contained" color="primary" onClick={ev => comprar(ev)}>
                     {properties.labels.comprar}
                 </Button>
             </div>
