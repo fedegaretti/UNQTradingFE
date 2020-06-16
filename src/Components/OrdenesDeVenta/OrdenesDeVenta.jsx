@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import OrdenesDeVentaTable from './OrdenesDeVentaTable';
 import OrdenDeVentaForm from './OrdenDeVentaForm';
-import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@material-ui/core';
+import { Dialog, Button, DialogTitle, DialogContent, IconButton } from '@material-ui/core';
 import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 import CloseIcon from '@material-ui/icons/Close';
 import NavigationBar from "../NavigationBar/NavigationBar";

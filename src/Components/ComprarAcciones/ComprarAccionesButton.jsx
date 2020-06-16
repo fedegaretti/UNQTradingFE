@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, Button, DialogTitle, DialogContent, Paper, IconButton } from '@material-ui/core';
+import { Dialog, Button, DialogTitle, DialogContent, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import ComprarAccionesForm from './ComprarAccionesForm'
 import {properties} from "../../Properties/properties.js"
