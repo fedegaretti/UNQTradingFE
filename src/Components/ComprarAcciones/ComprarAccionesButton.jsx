@@ -8,7 +8,7 @@ import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 export default function ComprarAccionesButton(props) {
     const [show, setShow] = useState(false);
     // hardcodeada la orden y el usuario, cuando se implementa con la lista se pasa por props
-    const body = (<ComprarAccionesForm ordenId={1} usuarioId={1} />)
+    const body = (<ComprarAccionesForm ordenId={props.ordenId} usuarioId={1} />)
 
     return (
         <div>
