@@ -79,7 +79,7 @@ export default function AccionesTable() {
             ? acciones.slice(pagina * accionesPorPagina, pagina * accionesPorPagina + accionesPorPagina)
             : acciones).map((row) => (
                 <StyledTableRow>
-                    <StyledTableCell align="center">{row.nombreEmpresa}</StyledTableCell>
+                    <StyledTableCell align="center">{row.empresa.nombreEmpresa}</StyledTableCell>
                     <StyledTableCell align="center">{row.cantidad}</StyledTableCell>
                     <StyledTableCell align="center">{row.fechaUltimaCompra}</StyledTableCell>
                 </StyledTableRow>

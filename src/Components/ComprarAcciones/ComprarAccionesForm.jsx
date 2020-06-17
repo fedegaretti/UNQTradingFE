@@ -7,7 +7,8 @@ import {properties} from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
 
 export default function ComprarAccionesForm(props) {
-    const [orden, setOrden] = useState('')
+    const [orden, setOrden] = useState({empresa: {}
+    })
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
@@ -54,7 +55,7 @@ export default function ComprarAccionesForm(props) {
                     disabled
                     id="nombre"
                     label="Nombre Empresa"
-                    
+                    value={orden.empresa.nombreEmpresa}
                     variant="outlined" />
                 <TextField
                     disabled
