@@ -78,7 +78,7 @@ export default function ComprarAccionesTable() {
                     <StyledTableCell align="center">{row.cantidadDeAcciones}</StyledTableCell>
                     <StyledTableCell align="center">{row.precio}</StyledTableCell>
                     <StyledTableCell align="center">{row.fechaDeVencimiento}</StyledTableCell>
-                    <StyledTableCell align="center">{row.nombreEmpresa}</StyledTableCell>
+                    <StyledTableCell align="center">{row.empresa.nombreEmpresa}</StyledTableCell>
                     <StyledTableCell aling="center">{<ComprarAccionesButton ordenId={row.id} usuarioId={1}/>}</StyledTableCell>
                 </StyledTableRow>
         ))
