@@ -22,12 +22,14 @@ export default function RegistroForm() {
       });
 
     const message = "El campo no puede estar vacío"
+    const success = {visible: false, message: ''}
+    const failed = {visible: true, message: message}
     const [errorPass, setErrorPass] = useState({visible: false, message: ''})
     const [errorConfirmarPass, setErrorConfirmarPass] = useState({visible: false, message: ''})
-    const [errorUsername, setErrorUsername] = useState({visible: false, message: ''})
-    const [errorNombre, setErrorNombre] = useState({visible: false, message: ''})
-    const [errorApellido, setErrorApellido] = useState({visible: false, message: ''})
-    const [errorDni, setErrorDni] = useState({visible: false, message: ''})
+    const [errorUsername, setErrorUsername] = useState(success)
+    const [errorNombre, setErrorNombre] = useState(success)
+    const [errorApellido, setErrorApellido] = useState(success)
+    const [errorDni, setErrorDni] = useState(success)
     const [errorEmail, setErrorEmail] = useState({visible: false, message: ''})
     const [errorConfirmarEmail, setErrorConfirmarEmail] = useState({visible: false, message: ''})
     const [errorCuit, setErrorCuit] = useState({visible: false, message: ''})
@@ -45,7 +47,7 @@ export default function RegistroForm() {
                     label="Nombre"
                     variant="outlined"
                     error = {errorNombre.visible}
-                    onBlur = {e => handleErrorNombre(e.target.value)}
+                    onBlur = {e => setErrorNombre(e.target.value === '' ? failed : success)}
                     helperText= {errorNombre.message}
                     type="text" />
                 <TextField
@@ -54,7 +56,7 @@ export default function RegistroForm() {
                     label="Apellido"
                     variant="outlined"
                     error = {errorApellido.visible}
-                    onBlur = {e => handleErrorApellido(e.target.value)}
+                    onBlur = {e => setErrorApellido(e.target.value === '' ? failed : success)}
                     helperText= {errorApellido.message}
                     type="text" />
                 <TextField
@@ -63,7 +65,7 @@ export default function RegistroForm() {
                     label="DNI"
                     variant="outlined"
                     error = {errorDni.visible}
-                    onBlur = {e => handleErrorDni(e.target.value)}
+                    onBlur = {e => setErrorDni(e.target.value === '' ? failed : success)}
                     helperText= {errorDni.message}
                     type="number" />
                 <TextField
@@ -100,7 +102,7 @@ export default function RegistroForm() {
                     variant="outlined"
                     type="text" 
                     error = {errorUsername.visible}
-                    onBlur = {e => handleErrorUsername(e.target.value)}
+                    onBlur = {e => setErrorUsername(e.target.value === '' ? failed : success)}
                     helperText= {errorUsername.message}/>
                 <TextField
                     {...bind}
@@ -157,48 +159,6 @@ export default function RegistroForm() {
         </div>
     );
 
-    function handleErrorUsername(value) {
-        if (value === "") {
-            setErrorUsername({
-                visible: true,
-                message: message
-            })
-        } else {
-            setErrorUsername({
-                visible: false,
-                message: ""
-            })
-        }
-    }
-
-    function handleErrorNombre(value) {
-        if (value === "") {
-            setErrorNombre({
-                visible: true,
-                message: message
-            })
-        } else {
-            setErrorNombre({
-                visible: false,
-                message: ""
-            })
-        }
-    }
-
-    function handleErrorApellido(value) {
-        if (value === "") {
-            setErrorApellido({
-                visible: true,
-                message: message
-            })
-        } else {
-            setErrorApellido({
-                visible: false,
-                message: ""
-            })
-        }
-    }
-
     function handleErrorEmail(value) {
         //TODO: Me falta validar el formato
         if (value === "") {
@@ -231,20 +191,6 @@ export default function RegistroForm() {
             })       
         } else {
             setErrorConfirmarEmail({
-                visible: false,
-                message: ""
-            })
-        }
-    }
-
-    function handleErrorDni(value) {
-        if (value === "") {
-            setErrorDni({
-                visible: true,
-                message: message
-            })
-        } else {
-            setErrorDni({
                 visible: false,
                 message: ""
             })
