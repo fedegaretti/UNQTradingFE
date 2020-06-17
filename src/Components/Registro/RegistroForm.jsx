@@ -202,6 +202,11 @@ export default function RegistroForm() {
                 visible: true,
                 message: message
             })
+        } else if (value.length !== 11) {
+            setErrorCuit({
+                visible: true,
+                message: "El cuit debe tener 11 caracteres"
+            })       
         } else {
             setErrorCuit({
                 visible: false,
