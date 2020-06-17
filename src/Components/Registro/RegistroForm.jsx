@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import { RestService } from '../../Service/RestService'
 import { useForm } from '../Common/GenericHookForm.jsx'
-import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useForkRef } from '@material-ui/core';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
@@ -35,7 +34,7 @@ export default function RegistroForm() {
     const [errorCuit, setErrorCuit] = useState({visible: false, message: ''})
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-    const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
+    const [alert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
 
     return (
@@ -184,7 +183,7 @@ export default function RegistroForm() {
                 visible: true,
                 message: message
             })
-        } else if (email != matchEmail) {
+        } else if (email !== matchEmail) {
             setErrorConfirmarEmail({
                 visible: true,
                 message: "La dirección de email no coincide"
@@ -240,7 +239,7 @@ export default function RegistroForm() {
                 visible: true,
                 message: message
             })
-        } else if (pass != matchPass) {
+        } else if (pass !== matchPass) {
             setErrorConfirmarPass({
                 visible: true,
                 message: "La contraseña no coincide"
