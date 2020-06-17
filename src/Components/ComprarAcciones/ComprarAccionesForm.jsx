@@ -7,11 +7,13 @@ import {properties} from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
 
 export default function ComprarAccionesForm(props) {
-    const [orden, setOrden] = useState('')
+    const [orden, setOrden] = useState({empresa: {}
+    })
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
     const classes = formStyles();
+
     useEffect(() => {
         RestService.GET.findOrdenDeVenta(props.ordenId).then(response => setOrden(response.data))
     }, [props.ordenId])
@@ -48,11 +50,12 @@ export default function ComprarAccionesForm(props) {
     return (
         <div>
             <form className={classes.root}>
+                {console.log(orden)}
                 <TextField
                     disabled
                     id="nombre"
                     label="Nombre Empresa"
-                    value={orden.nombreEmpresa}
+                    value={orden.empresa.nombreEmpresa}
                     variant="outlined" />
                 <TextField
                     disabled
