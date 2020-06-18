@@ -67,8 +67,8 @@ export default function LoginEmpresa() {
         }
     }
 
-    function validatePassword(contrasena) {
-        if (contrasena === "") {
+    function validatePassword(password) {
+        if (password === "") {
             setErrorPassword(failed);
         } else {
             setErrorPassword(success);
