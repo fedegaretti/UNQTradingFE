@@ -144,7 +144,7 @@ export default function RegistroForm() {
                             </Dialog>
                             </div>
                             <div>
-                                <Button disabled={!accept || hasErrors.current ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
+                                <Button disabled={!accept || hasErrors.current} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
                                     {properties.labels.registrar}
                                 </Button>
                             </div>
