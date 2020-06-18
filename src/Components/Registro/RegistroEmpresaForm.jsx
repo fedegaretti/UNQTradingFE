@@ -5,6 +5,7 @@ import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
+import { RestService } from '../../Service/RestService'
 
 export default function RegistroForm() {
 
@@ -14,7 +15,7 @@ export default function RegistroForm() {
         confirmarPass: "",
         email: "",
         confirmarEmail: "",
-        cuil: ""
+        cuit: ""
       });
 
     const message = "El campo no puede estar vacío"
@@ -25,10 +26,10 @@ export default function RegistroForm() {
     const [errorEmpresa, setErrorEmpresa] = useState(success)
     const [errorEmail, setErrorEmail] = useState({visible: false, message: ''})
     const [errorConfirmarEmail, setErrorConfirmarEmail] = useState({visible: false, message: ''})
-    const [errorCuil, setErrorCuil] = useState({visible: false, message: ''})
+    const [errorCuit, setErrorCuit] = useState({visible: false, message: ''})
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-    const [alert] = useState({ show: false, variant: "danger", message: '', icon: false });
+    const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
 
     return (
@@ -45,12 +46,12 @@ export default function RegistroForm() {
                     type="text" />
                 <TextField
                     {...bind}
-                    id="cuil"
-                    label="CUIL"
+                    id="cuit"
+                    label="CUIT"
                     variant="outlined"
-                    error = {errorCuil.visible}
-                    onBlur = {e => handleErrorCuil(e.target.value)}
-                    helperText= {errorCuil.message}
+                    error = {errorCuit.visible}
+                    onBlur = {e => handleErrorCuit(e.target.value)}
+                    helperText= {errorCuit.message}
                     type="number" />
                 <TextField
                     {...bind}
@@ -142,8 +143,8 @@ export default function RegistroForm() {
 
     function handleErrorConfirmarEmail(value) {
 
-        let email = Object.values(values)[5]
-        let matchEmail = Object.values(values)[6]
+        let email = Object.values(values)[3]
+        let matchEmail = Object.values(values)[4]
 
         if (value === "") {
             setErrorConfirmarEmail({
@@ -163,19 +164,19 @@ export default function RegistroForm() {
         }
     }
 
-    function handleErrorCuil(value) {
+    function handleErrorCuit(value) {
         if (value === "") {
-            setErrorCuil({
+            setErrorCuit({
                 visible: true,
                 message: message
             })
         } else if (value.length !== 11) {
-            setErrorCuil({
+            setErrorCuit({
                 visible: true,
-                message: "El cuil debe tener 11 caracteres"
+                message: "El cuit debe tener 11 caracteres"
             })       
         } else {
-            setErrorCuil({
+            setErrorCuit({
                 visible: false,
                 message: ""
             })
@@ -230,7 +231,35 @@ export default function RegistroForm() {
     }
 
     function register() {
-
+        if (accept) {
+            RestService.POST.registrarEmpresa({
+                nombreEmpresa: Object.values(values)[0],
+                password: Object.values(values)[1],
+                email: Object.values(values)[3],
+                cuit: Object.values(values)[5]
+                }).then(() => {
+                setAlert({
+                    show: true,
+                    variant: "filled",
+                    severity: "success",
+                    message: "Registro exitoso!!"
+                })
+            }).catch((error) => {
+                setAlert({
+                    show: true,
+                    severity: "error",
+                    variant: "filled",
+                    message: error.response.data.message
+                })
+            })
+        } else {
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "Debes aceptar los terminos y condiciones"
+            })
+        }
     }
 }
 
