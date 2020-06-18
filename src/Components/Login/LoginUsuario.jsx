@@ -1,42 +1,10 @@
 import React, { useState } from 'react';
-import { RestService } from '../../Service/RestService'
 import { useForm } from '../Common/GenericHookForm.jsx'
 import { TextField, Button, Card, CardContent, CardActions, Grid, AppBar, Toolbar, Typography, Link, Divider } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js";
-import { makeStyles } from '@material-ui/core/styles';
+import { loginStyles }  from '../MaterialDesign/Styles';
 import { Link as RouterLink } from 'react-router-dom';
 
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        minWidth: 275,
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        flexGrow: 1,
-    },
-    pos: {
-        marginBottom: 12,
-    },
-    large: {
-        width: theme.spacing(15),
-        height: theme.spacing(15),
-        margin: "auto"
-    },
-    formControl: {
-        margin: theme.spacing(3),
-    },
-    form: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    }
-}));
 
 export default function LoginUsuarioForm() {
 
@@ -52,7 +20,7 @@ export default function LoginUsuarioForm() {
     const [errorPass, setErrorPass] = useState({ visible: false, message: '' })
     const [errorUsername, setErrorUsername] = useState(success)
     const [errorDni, setErrorDni] = useState(success)
-    const classes = useStyles();
+    const classes = loginStyles();
 
     return (
         <Grid container>
