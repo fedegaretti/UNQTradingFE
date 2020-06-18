@@ -144,7 +144,7 @@ export default function RegistroForm() {
                             </Dialog>
                             </div>
                             <div>
-                                <Button disabled={accept && !hasErrors.current ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
+                                <Button disabled={!accept || hasErrors.current ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
                                     {properties.labels.registrar}
                                 </Button>
                             </div>
@@ -263,12 +263,6 @@ export default function RegistroForm() {
     }
 
     function register() {
-        console.log({
-            nombreEmpresa: Object.values(values)[0],
-            password: Object.values(values)[1],
-            email: Object.values(values)[3],
-            cuit: Object.values(values)[5]
-            })
         if (accept) {
             RestService.POST.registrarEmpresa({
                 nombreEmpresa: Object.values(values)[0],
