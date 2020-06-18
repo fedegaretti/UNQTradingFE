@@ -41,7 +41,15 @@ export default function RegistroForm() {
     const hasErrors = useRef(true);
 
     useEffect(() => {
-        hasErrors.current = (verifyFields());
+        hasErrors.current = (() => {
+            let error = false
+            for (let i = 0; i < Object.values(values).length - 1; i++) {
+                if (Object.values(values)[i] === "") {
+                    error = true
+                }
+            }
+            return error
+        });
     }, [values]);
 
     return (
@@ -55,7 +63,7 @@ export default function RegistroForm() {
                     </Toolbar>
                 </AppBar>
             </Grid>
-            <Grid container direction="row" justify="center" alignItems="center" maxWidth="xs">
+            <Grid container direction="row" justify="center" alignItems="center">
                 <Grid container spacing={0} direction="column" alignItems="center" justify="center" style={{ minHeight: '80vh' }}>
                     <Card className={classes.root}>
                         <Grid container direction="column" alignItems="center" justify="center" style={{ marginTop: "10px" }}>
@@ -293,16 +301,6 @@ export default function RegistroForm() {
                 message: ''
             })
         }
-    }
-
-    function verifyFields() {
-        let error = false
-        for (let i = 0; i < Object.values(values).length - 1; i++) {
-            if (Object.values(values)[i] === "") {
-                error = true
-            }
-        }
-        return error
     }
 
     function register() {
