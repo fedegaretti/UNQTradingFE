@@ -5,6 +5,7 @@ import OrdenesDeVenta from './Components/OrdenesDeVenta/OrdenesDeVenta.jsx'
 import ComprarAcciones from './Components/ComprarAcciones/ComprarAcciones.jsx'
 import Acciones from './Components/Usuario/Acciones.jsx';
 import Registro from './Components/Registro/RegistroForm.jsx';
+import RegistroEmpresa from './Components/Registro/RegistroEmpresaForm.jsx';
 import './App.css';
 import StickyFooter from './Components/Footer/Footer.jsx';
 import LoginUsuario from './Components/Login/LoginUsuario.jsx';
@@ -21,6 +22,7 @@ class App extends Component {
               <Route path="/acciones" component={Acciones} />
               <Route path="/comprar" component={ComprarAcciones} />
               <Route path="/registro" component={Registro} />
+              <Route path="/RegistrarEmpresa" component={RegistroEmpresa} />
               <Route path="/LoginUsuario" component ={LoginUsuario} />
             </Switch>
           </BrowserRouter>

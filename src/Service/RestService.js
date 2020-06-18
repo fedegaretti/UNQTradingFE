@@ -8,6 +8,7 @@ const COMPRAR_ACCIONES = "/usuario/buy?"
 const FIND_ORDEN_DE_VENTA = "/venta/find?ordenId="
 const FIND_ACCIONES = "/usuario/acciones?usuarioId="
 const FIND_ORDENES_DE_VENTA = "/venta/ordenes"
+const REGISTRAR_EMPRESA = "/empresa/register"
 
 export const RestService = {
     GET: {
@@ -30,6 +31,9 @@ export const RestService = {
         },
         comprarAcciones: function(ordenId, usuarioId) {
             return axios.post(API_URL + COMPRAR_ACCIONES + "ordenId=" + ordenId + "&usuarioId=" + usuarioId)
+        },
+        registrarEmpresa: function(empresa) {
+            return axios.post(API_URL + REGISTRAR_EMPRESA, empresa)
         },
         saveUsuario: function(usuario) {
             return axios.post(API_URL + SAVE_USUARIO, usuario)
