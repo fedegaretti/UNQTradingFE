@@ -3,6 +3,7 @@ import axios from 'axios';
 const API_URL = "http://localhost:8080/api"
 const ORDENES_DE_VENTA ="/venta/all?nombreEmpresa="
 const SAVE_ORDEN_VENTA = "/venta/save"
+const SAVE_USUARIO = "/usuario/save"
 const COMPRAR_ACCIONES = "/usuario/buy?"
 const FIND_ORDEN_DE_VENTA = "/venta/find?ordenId="
 const FIND_ACCIONES = "/usuario/acciones?usuarioId="
@@ -29,6 +30,9 @@ export const RestService = {
         },
         comprarAcciones: function(ordenId, usuarioId) {
             return axios.post(API_URL + COMPRAR_ACCIONES + "ordenId=" + ordenId + "&usuarioId=" + usuarioId)
+        },
+        saveUsuario: function(usuario) {
+            return axios.post(API_URL + SAVE_USUARIO, usuario)
         }
     },
     PUT: {
