@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useForm } from '../Common/GenericHookForm.jsx'
-import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+    Card, CardContent, Grid, AppBar, Toolbar, Typography} from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
@@ -29,100 +30,146 @@ export default function RegistroForm() {
     const [errorCuit, setErrorCuit] = useState({visible: false, message: ''})
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-    const [alert, setAlert] = useState({ show: false, variant: "filled", message: '', icon: false });
+    const [alert, setAlert] = useState({ show: true, variant: "filled", message: '', icon: false });
     const classes = formStyles();
     
     return (
         <div>
-            <form className={classes.root}>
-                <TextField
-                    {...bind}
-                    id="nombreEmpresa"
-                    label="Nombre Empresa"
-                    variant="outlined"
-                    error = {errorEmpresa.visible}
-                    onBlur = {e => setErrorEmpresa(e.target.value === '' ? failed : success)}
-                    helperText= {errorEmpresa.message}
-                    type="text" />
-                <TextField
-                    {...bind}
-                    id="cuit"
-                    label="CUIT"
-                    variant="outlined"
-                    error = {errorCuit.visible}
-                    onBlur = {e => handleErrorCuit(e.target.value)}
-                    helperText= {errorCuit.message}
-                    type="number" />
-                <TextField
-                    {...bind}
-                    id="email"
-                    label="Email"
-                    variant="outlined"
-                    error = {errorEmail.visible}
-                    onBlur = {e => handleErrorEmail(e.target.value)}
-                    helperText= {errorEmail.message}
-                    type="mail" />
-                <TextField
-                    {...bind}
-                    id="confirmarEmail"
-                    label="Confirmar Email"
-                    variant="outlined"
-                    error = {errorConfirmarEmail.visible}
-                    onBlur = {e => handleErrorConfirmarEmail(e.target.value)}
-                    helperText= {errorConfirmarEmail.message}
-                    type="mail" />
-                <TextField
-                    {...bind}
-                    id="password"
-                    label="Contraseña"
-                    variant="outlined"
-                    type="password"
-                    value = {useForm.password}
-                    error = {errorPass.visible}
-                    onBlur = {e => handleErrorPass(e.target.value)}
-                    helperText= {errorPass.message}/>
-                <TextField
-                    {...bind}
-                    id="confirmarPass"
-                    label="Confirmar contraseña"
-                    variant="outlined"
-                    type="password"
-                    error= {errorConfirmarPass.visible}
-                    onBlur = {e => handleErrorConfirmarPass(e.target.value)}
-                    helperText= {errorConfirmarPass.message}/>
-            </form>
-            <FormControlLabel className="p-2"
-                control={<Checkbox checked={accept} onChange={event => setAccept(event.target.checked)}/>}
-                label={<Button style= {{ textTransform:'none'}} value="justify" onClick={() => setShow(true)}>
-                            {properties.labels.aceptarTerminos}
-                        </Button>}/>
-            <div>
-            <Dialog
-                open={show}
-                onClose={() => setShow(false)}
-                scroll="body">
-                <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
-                <DialogContent dividers={true}>
-                    <DialogContentText
-                        id="scroll-dialog-description">
-                            {properties.labels.terminosDetalle}
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setShow(false)} color="primary">
-                        {properties.labels.cerrar}
-                    </Button>
-                </DialogActions>
-            </Dialog>
-            </div>
-            <div>
-                <Button disabled={accept && completed() ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
-                    {properties.labels.registrar}
-                </Button>
-            </div>
-            <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
-                {alert.message}
-            </Alert>
+            <Grid container>
+                <Grid container direction="row">
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6" className={classes.title}>
+                                Registrar Empresa
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </Grid>
+            <Grid container direction="row" justify="center" alignItems="center" maxWidth="xs">
+                <Grid container spacing={0} direction="column" alignItems="center" justify="center" style={{ minHeight: '80vh' }}>
+                    <Card className={classes.root}>
+                        <Grid container direction="column" alignItems="center" justify="center" style={{ marginTop: "10px" }}>
+                            <img src={require('../../Images/logo100.png')} alt="UNQTrading Logo" width="100" height="87" />
+                        </Grid>
+                            <form className={classes.root}>
+                            <Grid container>
+                                <Grid item xs={12} sm={6}>
+                                    <CardContent>
+                                        <TextField
+                                            {...bind}
+                                            id="nombreEmpresa"
+                                            label="Nombre Empresa"
+                                            variant="outlined"
+                                            error = {errorEmpresa.visible}
+                                            onBlur = {e => setErrorEmpresa(e.target.value === '' ? failed : success)}
+                                            helperText= {errorEmpresa.message}
+                                            type="text" />
+                                    </CardContent>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <CardContent>
+                                        <TextField
+                                            {...bind}
+                                            id="cuit"
+                                            label="CUIT"
+                                            variant="outlined"
+                                            error = {errorCuit.visible}
+                                            onBlur = {e => handleErrorCuit(e.target.value)}
+                                            helperText= {errorCuit.message}
+                                            type="number" />
+                                    </CardContent>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <CardContent>
+                                        <TextField
+                                            {...bind}
+                                            id="email"
+                                            label="Email"
+                                            variant="outlined"
+                                            error = {errorEmail.visible}
+                                            onBlur = {e => handleErrorEmail(e.target.value)}
+                                            helperText= {errorEmail.message}
+                                            type="mail" />
+                                    </CardContent>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <CardContent>
+                                        <TextField
+                                            {...bind}
+                                            id="confirmarEmail"
+                                            label="Confirmar Email"
+                                            variant="outlined"
+                                            error = {errorConfirmarEmail.visible}
+                                            onBlur = {e => handleErrorConfirmarEmail(e.target.value)}
+                                            helperText= {errorConfirmarEmail.message}
+                                            type="mail" />
+                                    </CardContent>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <CardContent>
+                                        <TextField
+                                            {...bind}
+                                            id="password"
+                                            label="Contraseña"
+                                            variant="outlined"
+                                            type="password"
+                                            value = {useForm.password}
+                                            error = {errorPass.visible}
+                                            onBlur = {e => handleErrorPass(e.target.value)}
+                                            helperText= {errorPass.message}/>
+                                    </CardContent>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <CardContent>
+                                        <TextField
+                                            {...bind}
+                                            id="confirmarPass"
+                                            label="Confirmar contraseña"
+                                            variant="outlined"
+                                            type="password"
+                                            error= {errorConfirmarPass.visible}
+                                            onBlur = {e => handleErrorConfirmarPass(e.target.value)}
+                                            helperText= {errorConfirmarPass.message}/>
+                                    </CardContent>
+                                </Grid>
+                            </Grid>
+                            </form>
+                        <FormControlLabel className="p-2"
+                            control={<Checkbox checked={accept} onChange={event => setAccept(event.target.checked)}/>}
+                            label={<Button style= {{ textTransform:'none'}} value="justify" onClick={() => setShow(true)}>
+                                        {properties.labels.aceptarTerminos}
+                                    </Button>}/>
+                        <div>
+                            <Dialog
+                                open={show}
+                                onClose={() => setShow(false)}
+                                scroll="body">
+                                <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
+                                <DialogContent dividers={true}>
+                                    <DialogContentText
+                                        id="scroll-dialog-description">
+                                            {properties.labels.terminosDetalle}
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={() => setShow(false)} color="primary">
+                                        {properties.labels.cerrar}
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                            </div>
+                            <div>
+                                <Button disabled={accept && completed(values) ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
+                                    {properties.labels.registrar}
+                                </Button>
+                            </div>
+                            <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
+                                {alert.message}
+                            </Alert>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Grid>
         </div>
     );
 
@@ -230,15 +277,6 @@ export default function RegistroForm() {
         }
     }
 
-    function completed() {
-        for (let i = 0; i < values.length - 1; i++) {
-            if (Object.values(values)[i] === "" || Object.values(values)[i] === "undefined") {
-                return false
-            }
-        }
-        return true
-    }
-
     function register() {
         console.log({
             nombreEmpresa: Object.values(values)[0],
@@ -279,3 +317,11 @@ export default function RegistroForm() {
 }
 
 
+const completed = (values) => {
+    for (let i = 0; i < values.length - 1; i++) {
+        if (Object.values(values)[i] === "" || Object.values(values)[i] === "undefined") {
+            return false              
+        }
+    }
+    return true
+}
