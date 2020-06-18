@@ -29,9 +29,9 @@ export default function RegistroForm() {
     const [errorCuit, setErrorCuit] = useState({visible: false, message: ''})
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-    const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
+    const [alert, setAlert] = useState({ show: false, variant: "filled", message: '', icon: false });
     const classes = formStyles();
-
+    
     return (
         <div>
             <form className={classes.root}>
@@ -97,15 +97,6 @@ export default function RegistroForm() {
                             {properties.labels.aceptarTerminos}
                         </Button>}/>
             <div>
-            </div>
-            <div>
-                <Button className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
-                    {properties.labels.cargar}
-                </Button>
-            </div>
-            <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
-                {alert.message}
-            </Alert>
             <Dialog
                 open={show}
                 onClose={() => setShow(false)}
@@ -123,6 +114,15 @@ export default function RegistroForm() {
                     </Button>
                 </DialogActions>
             </Dialog>
+            </div>
+            <div>
+                <Button disabled={accept && completed() ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
+                    {properties.labels.registrar}
+                </Button>
+            </div>
+            <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
+                {alert.message}
+            </Alert>
         </div>
     );
 
@@ -230,7 +230,22 @@ export default function RegistroForm() {
         }
     }
 
+    function completed() {
+        for (let i = 0; i < values.length - 1; i++) {
+            if (Object.values(values)[i] === "" || Object.values(values)[i] === "undefined") {
+                return false
+            }
+        }
+        return true
+    }
+
     function register() {
+        console.log({
+            nombreEmpresa: Object.values(values)[0],
+            password: Object.values(values)[1],
+            email: Object.values(values)[3],
+            cuit: Object.values(values)[5]
+            })
         if (accept) {
             RestService.POST.registrarEmpresa({
                 nombreEmpresa: Object.values(values)[0],

@@ -9,7 +9,8 @@ export const properties = {
         aceptarTerminos: "Acepto los terminos y Condiciones",
         comprarAcciones:"Comprar Acciones",
         cerrar: "Cerrar",
-        cargar: "Cargar"
+        cargar: "Cargar",
+        registrar: "Registrar"
     },
     misAcciones: {
         path: '/acciones',
