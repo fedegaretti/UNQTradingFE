@@ -10,7 +10,10 @@ export const properties = {
         comprarAcciones:"Comprar Acciones",
         cerrar: "Cerrar",
         cargar: "Cargar",
-        registrar: "Registrar"
+        registrar: "Registrar",
+        ingresar: "Ingresar",
+        noEstasRegistrado: "No estas registrado ?",
+        olvideContraseña: "Olvidé mi contraseña"
     },
     misAcciones: {
         path: '/acciones',
