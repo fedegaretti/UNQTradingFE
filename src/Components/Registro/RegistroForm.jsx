@@ -6,6 +6,7 @@ import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
+import { RestService } from '../../Service/RestService.js';
 
 export default function RegistroForm() {
 
@@ -18,7 +19,7 @@ export default function RegistroForm() {
         email: "",
         confirmarEmail: "",
         dni: "",
-        cuit: ""
+        cuil: ""
       });
 
     const message = "El campo no puede estar vacío"
@@ -32,10 +33,10 @@ export default function RegistroForm() {
     const [errorDni, setErrorDni] = useState(success)
     const [errorEmail, setErrorEmail] = useState({visible: false, message: ''})
     const [errorConfirmarEmail, setErrorConfirmarEmail] = useState({visible: false, message: ''})
-    const [errorCuit, setErrorCuit] = useState({visible: false, message: ''})
+    const [errorCuil, setErrorCuil] = useState({visible: false, message: ''})
     const [accept, setAccept] = useState(false)
     const [show, setShow] = useState(false)
-    const [alert] = useState({ show: false, variant: "danger", message: '', icon: false });
+    const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
     const hasErrors = useRef(true);
 
@@ -94,12 +95,12 @@ export default function RegistroForm() {
                                     <div>
                                         <TextField
                                             {...bind}
-                                            id="cuit"
-                                            label="CUIT"
+                                            id="cuil"
+                                            label="CUIL"
                                             variant="outlined"
-                                            error = {errorCuit.visible}
-                                            onBlur = {e => handleErrorCuit(e.target.value)}
-                                            helperText= {errorCuit.message}
+                                            error = {errorCuil.visible}
+                                            onBlur = {e => handleErrorCuil(e.target.value)}
+                                            helperText= {errorCuil.message}
                                             type="number" />
                                         <TextField
                                             {...bind}
@@ -228,19 +229,19 @@ export default function RegistroForm() {
         }
     }
 
-    function handleErrorCuit(value) {
+    function handleErrorCuil(value) {
         if (value === "") {
-            setErrorCuit({
+            setErrorCuil({
                 visible: true,
                 message: message
             })
         } else if (value.length !== 11) {
-            setErrorCuit({
+            setErrorCuil({
                 visible: true,
-                message: "El cuit debe tener 11 caracteres"
+                message: "El cuil debe tener 11 caracteres"
             })       
         } else {
-            setErrorCuit({
+            setErrorCuil({
                 visible: false,
                 message: ""
             })
@@ -305,7 +306,46 @@ export default function RegistroForm() {
     }
 
     function register() {
-
+        let user = Object.values(values)[0]
+        let nombre = Object.values(values)[3]
+        let apellido = Object.values(values)[4]
+        let dni = Object.values(values)[7]
+        let cuil = Object.values(values)[8]
+        let email = Object.values(values)[5]
+        let pass = Object.values(values)[1]
+        
+        if (accept) {
+            RestService.POST.saveUsuario({
+                nombre : nombre,
+                apellido: apellido,
+                username : user,
+                password : pass,
+                email : email,
+                dni : dni,
+                cuil : cuil
+            }).then(() => {
+                setAlert({
+                    show: true,
+                    variant: "filled",
+                    severity: "success",
+                    message: "Registro exitoso!!"
+                })
+            }).catch((error) => {
+                setAlert({
+                    show: true,
+                    severity: "error",
+                    variant: "filled",
+                    message: error.response.data.message
+                })
+            })
+        } else {
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "Debes aceptar los terminos y condiciones"
+            })
+        }
     }
 }
 
