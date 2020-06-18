@@ -50,7 +50,7 @@ export default function RegistroForm() {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" className={classes.title}>
-                            Registrar Persona
+                            {properties.labels.registroPersonaTitle}
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -178,7 +178,7 @@ export default function RegistroForm() {
                             </div>
                             <div>
                                 <Button disabled={!accept || hasErrors.current} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
-                                    Registrarme
+                                    {properties.labels.registrar}
                                 </Button>
                             </div>
                             <Alert className="mt-2" variant={alert.variant} severity={alert.severity} icon={alert.icon}>
