@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { useForm } from '../Common/GenericHookForm.jsx'
 import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
     Card, CardContent, Grid, AppBar, Toolbar, Typography} from '@material-ui/core';
@@ -32,7 +32,12 @@ export default function RegistroForm() {
     const [show, setShow] = useState(false)
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
-    
+    const hasErrors = useRef(true);
+
+    useEffect(() => {
+        hasErrors.current = (verifyFields());
+    }, [values]);
+
     return (
         <div>
               <Grid container direction="row">
@@ -139,7 +144,7 @@ export default function RegistroForm() {
                             </Dialog>
                             </div>
                             <div>
-                                <Button disabled={accept ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
+                                <Button disabled={accept && !hasErrors.current ? false : true} className="p-2 ml-1" variant="contained" color="primary" onClick={() => register()}>
                                     {properties.labels.registrar}
                                 </Button>
                             </div>
@@ -293,5 +298,15 @@ export default function RegistroForm() {
                 message: "Debes aceptar los terminos y condiciones"
             })
         }
+    }
+
+    function verifyFields() {
+        let error = false
+        for (let i = 0; i < Object.values(values).length - 1; i++) {
+            if (Object.values(values)[i] === "") {
+                error = true
+            }
+        }
+        return error
     }
 }
