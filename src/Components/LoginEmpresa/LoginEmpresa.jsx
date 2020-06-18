@@ -1,40 +1,31 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import React, {useEffect, useRef, useState} from 'react';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import Link from '@material-ui/core/Link';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import AppBar from "@material-ui/core/AppBar";
+import TextField from "@material-ui/core/TextField";
 import { Link as RouterLink } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { RestService} from "../../Service/RestService";
+import Redirect from "react-router-dom/es/Redirect";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) =>({
     root: {
         minWidth: 275,
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
     title: {
         flexGrow: 1,
     },
-    pos: {
-        marginBottom: 12,
-    },
-    large: {
-        width: theme.spacing(15),
-        height: theme.spacing(15),
-        margin: "auto"
-    },
-    formControl: {
-        margin: theme.spacing(3),
+    extendedIcon: {
+        marginRight: theme.spacing(1),
     },
     form: {
         '& .MuiTextField-root': {
@@ -46,7 +37,58 @@ const useStyles = makeStyles((theme) =>({
 
 export default function LoginEmpresa() {
 
+    const message = "El campo no puede estar vacío"
+    const success = {visible: false, message: ''}
+    const failed = {visible: true, message: message}
+    const [alert, setAlert] = useState({display: 'none', message: ''});
+    const [cuit, setCuit] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorCuit, setErrorCuit] = useState(success);
+    const [errorPassword, setErrorPassword] = useState(success);
+    const hasErrors = useRef(true);
+
     const classes = useStyles();
+
+    useEffect(() => {
+            hasErrors.current = (cuit === "" || password === "");
+        }, [cuit, password]
+    );
+
+    function validateCuit(cuit) {
+        if (cuit === "") {
+            setErrorCuit(failed);
+        } else if (cuit.length !== 11 ) {
+            setErrorCuit({
+                visible: true,
+                message: "El CUIT debe tener 11 dígitos"
+            })
+        } else {
+                setErrorCuit(success);
+        }
+    }
+
+    function validatePassword(contrasena) {
+        if (contrasena === "") {
+            setErrorPassword(failed);
+        } else {
+            setErrorPassword(success);
+        }
+    }
+
+    function login() {
+        if (!hasErrors.current) {
+            RestService.POST.loginEmpresa(cuit, password)
+                .then(() => {
+                    return <Redirect to="/ordenesVenta"/>
+                }).catch((error) => {
+                setAlert({
+                    display: 'block',
+                    message: error.message
+                });
+            })
+        }
+    }
+
     return (
         <Grid container>
             <Grid container direction="row">
@@ -69,31 +111,29 @@ export default function LoginEmpresa() {
                                 <div>
                                     <TextField
                                         required
-                                        autoFocus
-                                        id="nombre"
-                                        label="CUIL"
-                                        placeholder="2011111118"
+                                        id="Cuit"
+                                        label="CUIT"
+                                        placeholder="3011111119"
                                         type="number"
                                         variant="outlined"
+                                        error = {errorCuit.visible}
+                                        helperText= {errorCuit.message}
+                                        onChange={e => setCuit(e.target.value)}
+                                        onBlur={e => validateCuit(e.target.value)}
                                         />
                                 </div>
                                 <div>
                                     <TextField
                                         required
-                                        id="nombreUsuario"
-                                        label="Usuario"
-                                        placeholder="johndoe22"
-                                        variant="outlined"
-                                        />
-                                </div>
-                                <div>
-                                    <TextField
-                                        required
-                                        id="contraseña"
+                                        id="Contraseña"
                                         label="Contraseña"
                                         placeholder="MiSuperContraseña25"
                                         type="password"
                                         variant="outlined"
+                                        error = {errorPassword.visible}
+                                        helperText= {errorPassword.message}
+                                        onChange={e => setPassword(e.target.value)}
+                                        onBlur={e => validatePassword(e.target.value)}
                                         />
                                 </div>
                             </form>
@@ -102,15 +142,21 @@ export default function LoginEmpresa() {
                         <CardActions>
                             <Grid container direction="column">
                                 <Grid container direction="row" justify="center" alignItems="center" style={{ marginBottom: "8px" }}>
-                                    <Button variant="contained" color="primary">
+                                    <Fab disabled={hasErrors.current} variant="extended" color="primary" onClick={login()}>
+                                        <NavigationIcon className={classes.extendedIcon} />
                                         Ingresar
-                                    </Button>
+                                    </Fab>
                                 </Grid>
                                 <Grid container direction="row" justify="center" alignItems="center" >
                                     <Link href="#"> Olvidé mi contraseña </Link>
                                 </Grid>
                                 <Grid container direction="row" justify="center" alignItems="center">
                                     <Link component={RouterLink} to={"/RegistrarEmpresa"}> No estas registrado ? </Link>
+                                </Grid>
+                                <Grid container direction="row" justify="center" alignItems="center">
+                                    <Alert className="mt-2" variant="filled" severity="error" icon={false} style={{display: alert.display}}>
+                                        {alert.message}
+                                    </Alert>
                                 </Grid>
                             </Grid>
                         </CardActions>
