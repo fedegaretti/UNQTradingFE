@@ -7,6 +7,7 @@ import Acciones from './Components/Usuario/Acciones.jsx';
 import Registro from './Components/Registro/RegistroForm.jsx';
 import './App.css';
 import StickyFooter from './Components/Footer/Footer.jsx';
+import LoginUsuario from './Components/Login/LoginUsuario.jsx';
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
               <Route path="/acciones" component={Acciones} />
               <Route path="/comprar" component={ComprarAcciones} />
               <Route path="/registro" component={Registro} />
+              <Route path="/LoginUsuario" component ={LoginUsuario} />
             </Switch>
           </BrowserRouter>
           </div>
