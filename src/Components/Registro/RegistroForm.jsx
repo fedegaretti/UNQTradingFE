@@ -25,6 +25,7 @@ export default function RegistroForm() {
     const message = "El campo no puede estar vacío"
     const success = {visible: false, message: ''}
     const failed = {visible: true, message: message}
+   // const [formOk, setFormOk] = useState(false)
     const [errorPass, setErrorPass] = useState({visible: false, message: ''})
     const [errorConfirmarPass, setErrorConfirmarPass] = useState({visible: false, message: ''})
     const [errorUsername, setErrorUsername] = useState(success)
@@ -40,16 +41,18 @@ export default function RegistroForm() {
     const classes = formStyles();
     const hasErrors = useRef(true);
 
-    useEffect(() => {
-        hasErrors.current = (() => {
-            let error = false
-            for (let i = 0; i < Object.values(values).length - 1; i++) {
-                if (Object.values(values)[i] === "") {
-                    error = true
-                }
+    const verifyFields = () => {
+        let error = false
+        for (let i = 0; i < Object.values(values).length - 1; i++) {
+            if (Object.values(values)[i] === "") {
+                error = true
             }
-            return error
-        });
+        }
+        return error
+    }
+
+    useEffect(() => {
+        hasErrors.current = (verifyFields())
     }, [values]);
 
     return (
@@ -206,6 +209,11 @@ export default function RegistroForm() {
                 visible: true,
                 message: message
             })
+        } else if (!isValid(value)) {
+            setErrorEmail({
+                visible: true,
+                message: "El formato del email es incorrecto"
+            })       
         } else {
             setErrorEmail({
                 visible: false,
@@ -311,39 +319,79 @@ export default function RegistroForm() {
         let cuil = Object.values(values)[8]
         let email = Object.values(values)[5]
         let pass = Object.values(values)[1]
-        
-        if (accept) {
-            RestService.POST.saveUsuario({
-                nombre : nombre,
-                apellido: apellido,
-                username : user,
-                password : pass,
-                email : email,
-                dni : dni,
-                cuil : cuil
-            }).then(() => {
+
+        if (verifyPass() && verifyEmail())
+        {
+            if (accept) {
+                RestService.POST.saveUsuario({
+                    nombre : nombre,
+                    apellido: apellido,
+                    username : user,
+                    password : pass,
+                    email : email,
+                    dni : dni,
+                    cuil : cuil
+                }).then(() => {
+                    setAlert({
+                        show: true,
+                        variant: "filled",
+                        severity: "success",
+                        message: "Registro exitoso!!"
+                    })
+                }).catch((error) => {
+                    setAlert({
+                        show: true,
+                        severity: "error",
+                        variant: "filled",
+                        message: error.response.data.message
+                    })
+                })
+            } else {
                 setAlert({
                     show: true,
+                    severity: "warning",
                     variant: "filled",
-                    severity: "success",
-                    message: "Registro exitoso!!"
+                    message: "Debes aceptar los terminos y condiciones"
                 })
-            }).catch((error) => {
-                setAlert({
-                    show: true,
-                    severity: "error",
-                    variant: "filled",
-                    message: error.response.data.message
-                })
-            })
-        } else {
+            }
+        }
+    }
+
+    function verifyEmail(){
+        let email = Object.values(values)[5]
+        let matchEmail = Object.values(values)[6]
+
+        if(email !== matchEmail){
             setAlert({
                 show: true,
                 severity: "warning",
                 variant: "filled",
-                message: "Debes aceptar los terminos y condiciones"
+                message: "El email ingresado no coincide"
             })
+            return false
         }
+        return true
+    }
+
+    function verifyPass(){
+        let pass = Object.values(values)[1]
+        let matchPass = Object.values(values)[2]
+
+        if(pass !== matchPass){
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "La contraseña ingresada no coincide"
+            })
+            return false
+        }
+        return true
+    }
+
+    function isValid(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 }
 
