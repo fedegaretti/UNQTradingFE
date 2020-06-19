@@ -43,7 +43,6 @@ export const RestService = {
         loginEmpresa: function(cuit, password) {
             return axios.post(API_URL + LOGIN_EMPRESA + "cuit=" + cuit + "&password=" + password)
         },
-        },
         loginUsuario: function (dni, username, password) {
             return axios.post(API_URL + LOGIN_USUARIO + "dni=" + dni + "&username=" + username + "&password=" + password)
         }
