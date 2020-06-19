@@ -25,7 +25,6 @@ export default function RegistroForm() {
     const message = "El campo no puede estar vacío"
     const success = {visible: false, message: ''}
     const failed = {visible: true, message: message}
-   // const [formOk, setFormOk] = useState(false)
     const [errorPass, setErrorPass] = useState({visible: false, message: ''})
     const [errorConfirmarPass, setErrorConfirmarPass] = useState({visible: false, message: ''})
     const [errorUsername, setErrorUsername] = useState(success)
@@ -41,19 +40,19 @@ export default function RegistroForm() {
     const classes = formStyles();
     const hasErrors = useRef(true);
 
-    const verifyFields = () => {
+    useEffect(() => {
+        hasErrors.current = (verifyFields(values));
+    }, [values]);
+
+    function verifyFields(values) {
         let error = false
         for (let i = 0; i < Object.values(values).length - 1; i++) {
             if (Object.values(values)[i] === "") {
                 error = true
-            }
+            }   
         }
         return error
     }
-
-    useEffect(() => {
-        hasErrors.current = (verifyFields())
-    }, [values]);
 
     return (
         <div>
