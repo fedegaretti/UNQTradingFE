@@ -64,6 +64,37 @@ export const footerStyle = makeStyles((theme) => ({
     },
   }));
 
+  export const loginStyles = makeStyles((theme) => ({
+    root: {
+        minWidth: 275,
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        flexGrow: 1,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+    large: {
+        width: theme.spacing(15),
+        height: theme.spacing(15),
+        margin: "auto"
+    },
+    formControl: {
+        margin: theme.spacing(3),
+    },
+    form: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
+    }
+}));
+
 export const loginEmpresaStyle = makeStyles((theme) =>({
     root: {
         minWidth: 275,
