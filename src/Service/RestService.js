@@ -8,6 +8,7 @@ const COMPRAR_ACCIONES = "/usuario/buy?"
 const FIND_ORDEN_DE_VENTA = "/venta/find?ordenId="
 const FIND_ACCIONES = "/usuario/acciones?usuarioId="
 const FIND_ORDENES_DE_VENTA = "/venta/ordenes"
+const LOGIN_EMPRESA = "/empresa/login?"
 const REGISTRAR_EMPRESA = "/empresa/register"
 
 export const RestService = {
@@ -37,7 +38,10 @@ export const RestService = {
         },
         saveUsuario: function(usuario) {
             return axios.post(API_URL + SAVE_USUARIO, usuario)
-        }
+        },
+        loginEmpresa: function(cuit, password) {
+            return axios.post(API_URL + LOGIN_EMPRESA + "cuit=" + cuit + "&password=" + password)
+        },
     },
     PUT: {
 

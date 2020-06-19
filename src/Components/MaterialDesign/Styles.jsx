@@ -94,3 +94,21 @@ export const footerStyle = makeStyles((theme) => ({
         },
     }
 }));
+
+export const loginEmpresaStyle = makeStyles((theme) =>({
+    root: {
+        minWidth: 275,
+    },
+    title: {
+        flexGrow: 1,
+    },
+    extendedIcon: {
+        marginRight: theme.spacing(1),
+    },
+    form: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
+    }
+}));
