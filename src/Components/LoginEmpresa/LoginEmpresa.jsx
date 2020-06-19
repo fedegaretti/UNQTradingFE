@@ -12,31 +12,15 @@ import CardActions from '@material-ui/core/CardActions';
 import AppBar from "@material-ui/core/AppBar";
 import TextField from "@material-ui/core/TextField";
 import { Link as RouterLink } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import { RestService} from "../../Service/RestService";
-import Redirect from "react-router-dom/es/Redirect";
+import { loginEmpresaStyle } from "../MaterialDesign/Styles";
 import Alert from "@material-ui/lab/Alert";
+import useTheme from "@material-ui/core/styles/useTheme";
 
-const useStyles = makeStyles((theme) =>({
-    root: {
-        minWidth: 275,
-    },
-    title: {
-        flexGrow: 1,
-    },
-    extendedIcon: {
-        marginRight: theme.spacing(1),
-    },
-    form: {
-        '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            width: '25ch',
-        },
-    }
-}));
+export default function LoginEmpresa(props) {
 
-export default function LoginEmpresa() {
-
+    const theme = useTheme();
+    const classes = loginEmpresaStyle(theme)
     const message = "El campo no puede estar vacío"
     const success = {visible: false, message: ''}
     const failed = {visible: true, message: message}
@@ -45,9 +29,8 @@ export default function LoginEmpresa() {
     const [password, setPassword] = useState("");
     const [errorCuit, setErrorCuit] = useState(success);
     const [errorPassword, setErrorPassword] = useState(success);
+    const {history} = props;
     const hasErrors = useRef(true);
-
-    const classes = useStyles();
 
     useEffect(() => {
             hasErrors.current = (cuit === "" || password === "");
@@ -63,7 +46,7 @@ export default function LoginEmpresa() {
                 message: "El CUIT debe tener 11 dígitos"
             })
         } else {
-                setErrorCuit(success);
+            setErrorCuit(success);
         }
     }
 
@@ -75,15 +58,16 @@ export default function LoginEmpresa() {
         }
     }
 
-    function login() {
+    function login(ev) {
+        ev.preventDefault()
         if (!hasErrors.current) {
             RestService.POST.loginEmpresa(cuit, password)
-                .then(() => {
-                    return <Redirect to="/ordenesVenta"/>
-                }).catch((error) => {
+                .then(response => {
+                    history.push("/ordenesVenta", {empresa: response.data})
+                }).catch(error => {
                 setAlert({
                     display: 'block',
-                    message: error.message
+                    message: error.response.data.message
                 });
             })
         }
@@ -142,7 +126,7 @@ export default function LoginEmpresa() {
                         <CardActions>
                             <Grid container direction="column">
                                 <Grid container direction="row" justify="center" alignItems="center" style={{ marginBottom: "8px" }}>
-                                    <Fab disabled={hasErrors.current} variant="extended" color="primary" onClick={login()}>
+                                    <Fab disabled={hasErrors.current} variant="extended" color="primary" onClick={ev => login(ev)}>
                                         <NavigationIcon className={classes.extendedIcon} />
                                         Ingresar
                                     </Fab>

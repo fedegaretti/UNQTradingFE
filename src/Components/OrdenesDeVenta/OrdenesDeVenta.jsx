@@ -6,8 +6,9 @@ import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 import CloseIcon from '@material-ui/icons/Close';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-export default function OrdenesDeVenta()  {
+export default function OrdenesDeVenta(props)  {
 
+    const empresa = props.location.state.empresa;
     const [show, setShow] = useState(false);
     const handleClose = () => {
       setShow(false)
@@ -51,7 +52,7 @@ export default function OrdenesDeVenta()  {
                         </IconButton>
                     </DialogTitle>
                     <DialogContent>
-                    <OrdenDeVentaForm/>
+                    <OrdenDeVentaForm empresa={empresa}/>
                     </DialogContent>
                 </Dialog>
             </div>
