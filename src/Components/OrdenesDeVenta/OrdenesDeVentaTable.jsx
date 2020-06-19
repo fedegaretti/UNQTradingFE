@@ -11,10 +11,11 @@ import TableFooter from "@material-ui/core/TableFooter";
 import {TablePaginationActions } from "../Common/Table.jsx";
 import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
-export default function OrdenesDeVentaTable() {
-    const [ordenes, handleOrdenes] = useState([])
+export default function OrdenesDeVentaTable(props) {
+    const [ordenes, handleOrdenes] = useState([]);
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
+    const nombreEmpresa = !!props.empresa ? props.empresa.nombreEmpresa : '';
     const classes = tableStyle();
     const emptyRows = ordenesPorPagina - Math.min(ordenesPorPagina, ordenes.length - pagina * ordenesPorPagina);
 
@@ -28,9 +29,9 @@ export default function OrdenesDeVentaTable() {
     };
 
     useEffect(() => {
-        RestService.GET.findOrdenesDeVentaByEmpresa("UNQ")
+        RestService.GET.findOrdenesDeVentaByEmpresa(nombreEmpresa)
             .then(response => handleOrdenes(response.data))
-    }, [])
+    }, [nombreEmpresa])
 
     return (
          <div className="container row justify-content-center">
