@@ -3,7 +3,7 @@ import AccionesTable from './AccionesTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function Acciones(props)  {
-    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginUsuario");
+    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginPersona");
     const content = () => {
         return (
             <div className="container">
