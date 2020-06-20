@@ -375,6 +375,16 @@ export default function RegistroForm() {
             })
             return false
         }
+        
+        if(pass.length < 6){
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "La contraseña debe tener al menos 6 caracteres "
+            })
+            return false
+        }
         return true
     }
 
