@@ -10,7 +10,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import NavigationIcon from '@material-ui/icons/Navigation';
 
 
-export default function LoginUsuario(props) {
+export default function LoginPersona(props) {
 
     const { history } = props;
     const message = "El campo no puede estar vacío"
@@ -34,13 +34,8 @@ export default function LoginUsuario(props) {
     function validateDni(dni) {
         if (dni === "") {
             setErrorDni(failed);
-        } else if (dni.length !== 8) {
-            setErrorDni({
-                visible: true,
-                message: "El DNI debe tener 8 dígitos"
-            })
         } else {
-            setErrorDni(success);
+            setErrorDni(success)
         }
     }
 
@@ -63,7 +58,7 @@ export default function LoginUsuario(props) {
     function login(ev) {
         ev.preventDefault()
         if (!hasErrors.current) {
-            RestService.POST.loginUsuario(dni, username, password)
+            RestService.POST.loginPersona(dni, username, password)
                 .then(response => {
                     history.push("/acciones", { usuario: response.data })
                 }).catch(error => {
@@ -80,7 +75,7 @@ export default function LoginUsuario(props) {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" className={classes.title}>
-                            Login Usuario
+                            Login Persona
                         </Typography>
                     </Toolbar>
                 </AppBar>
