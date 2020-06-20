@@ -6,8 +6,9 @@ import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 import CloseIcon from '@material-ui/icons/Close';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-export default function OrdenesDeVenta()  {
+export default function OrdenesDeVenta(props)  {
 
+    const empresa = !!props.location.state ? props.location.state.empresa : props.history.push("/LoginEmpresa");
     const [show, setShow] = useState(false);
     const handleClose = () => {
       setShow(false)
@@ -19,7 +20,7 @@ export default function OrdenesDeVenta()  {
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <OrdenesDeVentaTable/>
+                        <OrdenesDeVentaTable empresa={empresa}/>
                         <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={() => setShow(true)}>
                             Cargar nueva
                         </Button>
@@ -51,7 +52,7 @@ export default function OrdenesDeVenta()  {
                         </IconButton>
                     </DialogTitle>
                     <DialogContent>
-                    <OrdenDeVentaForm/>
+                    <OrdenDeVentaForm empresa={empresa}/>
                     </DialogContent>
                 </Dialog>
             </div>

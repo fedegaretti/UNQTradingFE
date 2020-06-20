@@ -11,12 +11,13 @@ import TableFooter from "@material-ui/core/TableFooter";
 import {TablePaginationActions } from "../Common/Table.jsx";
 import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
-export default function AccionesTable() {
+export default function AccionesTable(props) {
     const [acciones, handleAcciones] = useState([])
     const [pagina, setPagina] = React.useState(0);
     const [accionesPorPagina, setAccionesPorPagina] = React.useState(5);
     const classes = tableStyle();
     const emptyRows = accionesPorPagina - Math.min(accionesPorPagina, acciones.length - pagina * accionesPorPagina);
+    const usuarioId = !!props.usuario ? props.usuario.id : '';
 
     const handleChangePage = (event, newPage) => {
         setPagina(newPage);
@@ -28,9 +29,9 @@ export default function AccionesTable() {
     };
 
     useEffect(() => {
-        RestService.GET.findAccionesByUser(1) // usuario hardcodeado
+        RestService.GET.findAccionesByUser(usuarioId)
             .then(response => handleAcciones(response.data))
-    }, [])
+    }, [usuarioId])
 
     return (
          <div className="container row justify-content-center">

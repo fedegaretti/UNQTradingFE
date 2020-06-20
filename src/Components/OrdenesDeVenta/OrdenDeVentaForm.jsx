@@ -6,7 +6,7 @@ import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
 
-export default function OrdenDeVentaForm() {
+export default function OrdenDeVentaForm(props) {
 
     const [cantidad, setCantidad] = useState('');
     const [precio, setPrecio] = useState('');
@@ -82,7 +82,7 @@ export default function OrdenDeVentaForm() {
     function save() {
         if (accept) {
             RestService.POST.saveOrdenDeVenta({
-                nombreEmpresa : "UNQ",
+                nombreEmpresa : props.empresa.nombreEmpresa,
                 cantidadDeAcciones : cantidad,
                 precio : precio,
                 fechaDeVencimiento : vencimiento
