@@ -9,7 +9,7 @@ import RegistroEmpresa from './Components/Registro/RegistroEmpresaForm.jsx';
 import './App.css';
 import StickyFooter from './Components/Footer/Footer.jsx';
 import LoginEmpresa from "./Components/LoginEmpresa/LoginEmpresa";
-import LoginUsuario from './Components/Login/LoginUsuario.jsx';
+import LoginPersona from './Components/Login/LoginPersona.jsx';
 
 class App extends Component {
   render() {
@@ -24,7 +24,7 @@ class App extends Component {
               <Route path="/comprar" component={ComprarAcciones} />
               <Route path="/registro" component={Registro} />
               <Route path="/RegistrarEmpresa" component={RegistroEmpresa} />
-              <Route path="/LoginUsuario" component ={LoginUsuario} />
+              <Route path="/LoginPersona" component ={LoginPersona} />
               <Route path="/LoginEmpresa" component={LoginEmpresa} />
             </Switch>
           </BrowserRouter>
