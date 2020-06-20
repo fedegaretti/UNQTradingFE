@@ -107,8 +107,12 @@ export default function NavigationBar(props) {
     }
 
     function menuItems() {
+        let propValue = props.isUser ? props.usuario : props.empresa;
         return menu.map(prop => (
-            <MenuItem component={Link} to={prop.path}>
+            <MenuItem component={Link} to={{
+                pathname: prop.path,
+                state: {usuario: propValue}
+            }}>
                 <ListItemIcon>{getIcon(prop.icon)}</ListItemIcon>
                 <ListItemText primary={prop.text}/>
             </MenuItem>

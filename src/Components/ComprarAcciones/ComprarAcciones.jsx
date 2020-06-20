@@ -2,8 +2,8 @@ import React from 'react';
 import ComprarAccionesTable from './ComprarAccionesTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-export default function ComprarAcciones()  {
-
+export default function ComprarAcciones(props)  {
+    const usuario = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginUsuario");
     const content = () => {
         return (
             <div className="container">
@@ -22,6 +22,7 @@ export default function ComprarAcciones()  {
                 name={"Comprar acciones"}
                 isUser={true}
                 content={content()}
+                usuario={usuario}
             />
         </div>
     );

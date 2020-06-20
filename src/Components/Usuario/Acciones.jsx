@@ -21,6 +21,7 @@ export default function Acciones(props)  {
                 name={"Mis acciones"}
                 isUser={true}
                 content={content()}
+                usuario={usuario}
             />
         </div>
     );
