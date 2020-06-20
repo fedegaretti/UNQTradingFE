@@ -202,7 +202,6 @@ export default function RegistroForm() {
     );
 
     function handleErrorEmail(value) {
-        //TODO: Me falta validar el formato
         if (value === "") {
             setErrorEmail({
                 visible: true,
@@ -319,40 +318,31 @@ export default function RegistroForm() {
         let email = Object.values(values)[5]
         let pass = Object.values(values)[1]
 
-        if (verifyPass() && verifyEmail())
+        if (verifyPass() && verifyEmail() && verifyCuil())
         {
-            if (accept) {
-                RestService.POST.saveUsuario({
-                    nombre : nombre,
-                    apellido: apellido,
-                    username : user,
-                    password : pass,
-                    email : email,
-                    dni : dni,
-                    cuil : cuil
-                }).then(() => {
-                    setAlert({
-                        show: true,
-                        variant: "filled",
-                        severity: "success",
-                        message: "Registro exitoso!!"
-                    })
-                }).catch((error) => {
-                    setAlert({
-                        show: true,
-                        severity: "error",
-                        variant: "filled",
-                        message: error.response.data.message
-                    })
-                })
-            } else {
+            RestService.POST.saveUsuario({
+                nombre : nombre,
+                apellido: apellido,
+                username : user,
+                password : pass,
+                email : email,
+                dni : dni,
+                cuil : cuil
+            }).then(() => {
                 setAlert({
                     show: true,
-                    severity: "warning",
                     variant: "filled",
-                    message: "Debes aceptar los terminos y condiciones"
+                    severity: "success",
+                    message: "Registro exitoso!!"
                 })
-            }
+            }).catch((error) => {
+                setAlert({
+                    show: true,
+                    severity: "error",
+                    variant: "filled",
+                    message: error.response.data.message
+                })
+            })
         }
     }
 
@@ -382,6 +372,21 @@ export default function RegistroForm() {
                 severity: "warning",
                 variant: "filled",
                 message: "La contraseña ingresada no coincide"
+            })
+            return false
+        }
+        return true
+    }
+
+    function verifyCuil(){
+        let cuil = Object.values(values)[8]
+
+        if(cuil.length !== 11){
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "El cuil debe tener 11 caracteres"
             })
             return false
         }
