@@ -33,17 +33,20 @@ export default function RegistroForm() {
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
     const hasErrors = useRef(true);
+    
     useEffect(() => {
-        hasErrors.current = (() => {
-            let error = false
-            for (let i = 0; i < Object.values(values).length - 1; i++) {
-                if (Object.values(values)[i] === "") {
-                    error = true
-                }
-            }
-            return error
-        });
+        hasErrors.current = (verifyFields(values));
     }, [values]);
+
+    function verifyFields(values) {
+        let error = false
+        for (let i = 0; i < Object.values(values).length - 1; i++) {
+            if (Object.values(values)[i] === "") {
+                error = true
+            }   
+        }
+        return error
+    }
 
     return (
         <div>
@@ -166,12 +169,16 @@ export default function RegistroForm() {
     );
 
     function handleErrorEmail(value) {
-        //TODO: Me falta validar el formato
         if (value === "") {
             setErrorEmail({
                 visible: true,
                 message: message
             })
+        } else if (!isValid(value)) {
+            setErrorEmail({
+                visible: true,
+                message: "El formato del email es incorrecto"
+            })       
         } else {
             setErrorEmail({
                 visible: false,
@@ -270,7 +277,7 @@ export default function RegistroForm() {
     }
 
     function register() {
-        if (accept) {
+        if (verifyPass() && verifyEmail() && verifyCuit()) {
             RestService.POST.registrarEmpresa({
                 nombreEmpresa: Object.values(values)[0],
                 password: Object.values(values)[1],
@@ -291,13 +298,58 @@ export default function RegistroForm() {
                     message: error.response.data.message
                 })
             })
-        } else {
+        }
+    }
+
+    function verifyEmail(){
+        let email = Object.values(values)[3]
+        let matchEmail = Object.values(values)[4]
+
+        if(email !== matchEmail || !isValid(email)){
             setAlert({
                 show: true,
                 severity: "warning",
                 variant: "filled",
-                message: "Debes aceptar los terminos y condiciones"
+                message: "El email ingresado es erroneo o no coincide"
             })
+            return false
         }
+        return true
+    }
+
+    function verifyPass(){
+        let pass = Object.values(values)[1]
+        let matchPass = Object.values(values)[2]
+
+        if(pass !== matchPass){
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "La contraseña ingresada no coincide"
+            })
+            return false
+        }
+        return true
+    }
+
+    function verifyCuit(){
+        let cuit = Object.values(values)[5]
+
+        if(cuit.length !== 11){
+            setAlert({
+                show: true,
+                severity: "warning",
+                variant: "filled",
+                message: "El cuil debe tener 11 caracteres"
+            })
+            return false
+        }
+        return true
+    }
+
+    function isValid(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 }

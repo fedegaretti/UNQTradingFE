@@ -350,12 +350,12 @@ export default function RegistroForm() {
         let email = Object.values(values)[5]
         let matchEmail = Object.values(values)[6]
 
-        if(email !== matchEmail){
+        if(email !== matchEmail || !isValid(email)){
             setAlert({
                 show: true,
                 severity: "warning",
                 variant: "filled",
-                message: "El email ingresado no coincide"
+                message: "El email ingresado es erroneo o no coincide"
             })
             return false
         }
