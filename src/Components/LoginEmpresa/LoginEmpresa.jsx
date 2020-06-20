@@ -63,7 +63,7 @@ export default function LoginEmpresa(props) {
         if (!hasErrors.current) {
             RestService.POST.loginEmpresa(cuit, password)
                 .then(response => {
-                    history.push("/ordenesVenta", {empresa: response.data})
+                    history.push("/ordenesVenta", {usuario: response.data})
                 }).catch(error => {
                 setAlert({
                     display: 'block',

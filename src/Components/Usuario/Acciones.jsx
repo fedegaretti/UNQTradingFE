@@ -3,13 +3,13 @@ import AccionesTable from './AccionesTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function Acciones(props)  {
-    const usuario = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginPersona");
+    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginUsuario");
     const content = () => {
         return (
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <AccionesTable usuario={usuario}/>
+                        <AccionesTable usuario={persona}/>
                     </div>
                 </div>
             </div>
@@ -21,6 +21,7 @@ export default function Acciones(props)  {
                 name={"Mis acciones"}
                 isUser={true}
                 content={content()}
+                usuario={persona}
             />
         </div>
     );
