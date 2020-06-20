@@ -8,7 +8,7 @@ import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function OrdenesDeVenta(props)  {
 
-    const empresa = !!props.location.state ? props.location.state.empresa : props.history.push("/LoginEmpresa");
+    const empresa = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginEmpresa");
     const [show, setShow] = useState(false);
     const handleClose = () => {
       setShow(false)
@@ -36,6 +36,7 @@ export default function OrdenesDeVenta(props)  {
                     name={"Ordenes de Venta"}
                     isUser={false}
                     content={content()}
+                    usuario={empresa}
                 />
                 <Dialog
                     color="primary"
