@@ -4,8 +4,12 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import OrdenesDeVenta from './Components/OrdenesDeVenta/OrdenesDeVenta.jsx'
 import ComprarAcciones from './Components/ComprarAcciones/ComprarAcciones.jsx'
 import Acciones from './Components/Usuario/Acciones.jsx';
+import Registro from './Components/Registro/RegistroForm.jsx';
+import RegistroEmpresa from './Components/Registro/RegistroEmpresaForm.jsx';
 import './App.css';
 import StickyFooter from './Components/Footer/Footer.jsx';
+import LoginEmpresa from "./Components/LoginEmpresa/LoginEmpresa";
+import LoginPersona from './Components/Login/LoginPersona.jsx';
 
 class App extends Component {
   render() {
@@ -18,6 +22,10 @@ class App extends Component {
               <Route path="/ordenesVenta" component={OrdenesDeVenta} />
               <Route path="/acciones" component={Acciones} />
               <Route path="/comprar" component={ComprarAcciones} />
+              <Route path="/registro" component={Registro} />
+              <Route path="/RegistrarEmpresa" component={RegistroEmpresa} />
+              <Route path="/LoginPersona" component ={LoginPersona} />
+              <Route path="/LoginEmpresa" component={LoginEmpresa} />
             </Switch>
           </BrowserRouter>
           </div>
