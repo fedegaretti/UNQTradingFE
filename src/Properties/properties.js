@@ -30,5 +30,10 @@ export const properties = {
         path: '/ordenesVenta',
         icon: 'InsertChartIcon',
         text: 'Ordenes de venta'
+    },
+    cargarSaldo: {
+        path: '/CargarSaldo',
+        icon: 'CreditCardIcon',
+        text: 'Cargar saldo'
     }
 }

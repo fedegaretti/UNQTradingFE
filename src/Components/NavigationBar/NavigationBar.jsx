@@ -11,6 +11,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 import MenuItem from "@material-ui/core/MenuItem";
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 import Drawer from '@material-ui/core/Drawer';
 import MenuList from '@material-ui/core/MenuList';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -89,7 +90,7 @@ export default function NavigationBar(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const usuario = [properties.misAcciones, properties.comprarAcciones];
+    const usuario = [properties.misAcciones, properties.comprarAcciones, properties.cargarSaldo];
     const empresa = [properties.ordenesVenta];
     const menu = props.isUser ? usuario : empresa;
 
@@ -101,6 +102,8 @@ export default function NavigationBar(props) {
                 return <AttachMoneyIcon color="primary"/>;
             case 'InsertChartIcon':
                 return <InsertChartIcon color="primary"/>;
+            case 'CreditCardIcon':
+                return <CreditCardIcon color="primary"/>;
             default:
                 return;
         }
