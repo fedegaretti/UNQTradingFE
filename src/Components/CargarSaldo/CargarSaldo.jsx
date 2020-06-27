@@ -107,6 +107,7 @@ export default function CargarSaldo(props) {
                 name={"Cargar saldo"}
                 isUser={true}
                 content={content()}
+                usuario={persona}
             />
         </div>
     );
