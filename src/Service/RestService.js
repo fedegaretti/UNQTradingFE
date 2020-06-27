@@ -8,6 +8,7 @@ const COMPRAR_ACCIONES = "/usuario/buy?"
 const FIND_ORDEN_DE_VENTA = "/venta/find?ordenId="
 const FIND_ACCIONES = "/usuario/acciones?usuarioId="
 const FIND_ORDENES_DE_VENTA = "/venta/ordenes"
+const FIND_USUARIO = "/usuario/find?usuarioId="
 const LOGIN_EMPRESA = "/empresa/login?"
 const REGISTRAR_EMPRESA = "/empresa/register"
 const LOGIN_PERSONA = "/usuario/login?"
@@ -26,7 +27,11 @@ export const RestService = {
         },
         findAllOrdenesDeVenta : function(){
             return axios.get(API_URL + FIND_ORDENES_DE_VENTA )
+        },
+        findUser : function(userId){
+            return axios.get(API_URL + FIND_USUARIO + userId)
         }
+
     },
     POST: {
         saveOrdenDeVenta: function(ordenDeVenta) {
