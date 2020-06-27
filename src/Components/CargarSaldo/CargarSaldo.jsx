@@ -8,7 +8,8 @@ import {RestService} from "../../Service/RestService";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Collapse from "@material-ui/core/Collapse";
 
-export default function CargarSaldo() {
+export default function CargarSaldo(props) {
+    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginPersona");
     const theme = useTheme();
     const classes = loginEmpresaStyle(theme)
     const message = "El saldo debe ser mayor a 0"
@@ -42,16 +43,16 @@ export default function CargarSaldo() {
     function cargarSaldo(ev) {
         ev.preventDefault();
         if (!hasErrors.current) {
-            RestService.POST.cargarSaldo("12345678", saldo)
+            RestService.POST.cargarSaldo(persona.dni, saldo)
                 .then(() => {
                     setAlert({
                         severity: 'success',
                         message: 'Saldo cargado correctamente'
                     })
-                }).catch(() => {
+                }).catch(error => {
                     setAlert({
                         severity: 'error',
-                        message: 'La cagaste amigo'
+                        message: error.response.data.message
                     })
                 })
             setOpen(true)
@@ -86,7 +87,7 @@ export default function CargarSaldo() {
                                     </Fab>
                                 </Grid>
                                 <Grid container direction="row" justify="center" alignItems="center">
-                                    <Collapse in={open} addEndListener={}>
+                                    <Collapse in={open}>
                                         <Alert className="mt-2" variant="filled" severity={alert.severity} icon={false} style={{display: alert.display}}>
                                             {alert.message}
                                         </Alert>
