@@ -11,6 +11,7 @@ const FIND_ORDENES_DE_VENTA = "/venta/ordenes"
 const LOGIN_EMPRESA = "/empresa/login?"
 const REGISTRAR_EMPRESA = "/empresa/register"
 const LOGIN_PERSONA = "/usuario/login?"
+const CARGAR_SALDO = "/usuario/cargarSaldo?"
 
 export const RestService = {
     GET: {
@@ -45,6 +46,9 @@ export const RestService = {
         },
         loginPersona: function (dni, username, password) {
             return axios.post(API_URL + LOGIN_PERSONA + "dni=" + dni + "&username=" + username + "&password=" + password)
+        },
+        cargarSaldo: function (dni, saldo) {
+            return axios.post(API_URL + CARGAR_SALDO + "dni=" + dni + "&saldo=" + saldo)
         }
     },
     PUT: {
