@@ -16,7 +16,7 @@ export default function Saldo(props){
     )
 
     return(
-        <Typography variant="h6" style={{marginLeft: "70vw"}}>
+        <Typography variant="h6" style={{marginLeft: "65vw"}}>
             Saldo: ${saldo}
         </Typography>
     )
