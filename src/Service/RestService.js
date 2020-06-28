@@ -33,11 +33,9 @@ export const RestService = {
         findUser : function(userId){
             return axios.get(API_URL + FIND_USUARIO + userId)
         },
-        getSaldoPersona : function (userId) {
-            return axios.get(API_URL + OBTENER_SALDO_PERSONA + userId)
-        },
-        getSaldoEmpresa : function (userId) {
-            return axios.get(API_URL + OBTENER_SALDO_EMPRESA + userId)
+        getSaldo : function (userId, isUser) {
+            let url = isUser ? OBTENER_SALDO_PERSONA : OBTENER_SALDO_EMPRESA
+            return axios.get(API_URL + url + userId)
         }
 
     },

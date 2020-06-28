@@ -8,17 +8,10 @@ export default function Saldo(props){
     const isUser = props.isUser
 
     useEffect(() => {
-            if (isUser) {
-                RestService.GET.getSaldoPersona(usuario.id)
-                    .then(response => {
-                        setSaldo(response.data)
-                    })
-            } else {
-                RestService.GET.getSaldoEmpresa(usuario.id)
-                    .then(response => {
-                        setSaldo(response.data)
-                    })
-            }
+            RestService.GET.getSaldo(usuario.id, isUser)
+                .then(response => {
+                    setSaldo(response.data)
+                })
         }, [isUser, usuario.id]
     )
 
