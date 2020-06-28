@@ -17,12 +17,11 @@ export default function OrdenesDeVenta(props)  {
     };
     
     const content = () => {
-        console.log(props)
         return (
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <OrdenesDeVentaTable empresa={usuario}/>
+                        <OrdenesDeVentaTable usuario={usuario}/>
                         <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={() => setShow(true)}>
                             Cargar nueva
                         </Button>

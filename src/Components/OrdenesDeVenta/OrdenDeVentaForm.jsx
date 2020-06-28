@@ -80,7 +80,6 @@ export default function OrdenDeVentaForm(props) {
     );
 
     function save() {
-        console.log(props)
         if (accept) {
             RestService.POST.saveOrdenDeVenta({
                 creadorId : props.usuario.id,

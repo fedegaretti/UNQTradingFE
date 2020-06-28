@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API_URL = "http://localhost:8080/api"
 const ORDENES_DE_VENTA ="/venta/all?nombreEmpresa="
+const ORDENES_DE_VENTA_BY_CREADOR ="/venta/usuario/all?creadorId="
 const SAVE_ORDEN_VENTA = "/venta/save"
 const SAVE_USUARIO = "/usuario/save"
 const COMPRAR_ACCIONES = "/usuario/buy?"
@@ -26,6 +27,9 @@ export const RestService = {
         },
         findAllOrdenesDeVenta : function(){
             return axios.get(API_URL + FIND_ORDENES_DE_VENTA )
+        },
+        findAllOrdenesDeVentaByCreador : function(creadorId){
+            return axios.get(API_URL + ORDENES_DE_VENTA_BY_CREADOR + creadorId )
         }
     },
     POST: {

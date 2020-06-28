@@ -50,7 +50,6 @@ export default function ComprarAccionesForm(props) {
     return (
         <div>
             <form className={classes.root}>
-                {console.log(orden)}
                 <TextField
                     disabled
                     id="nombre"

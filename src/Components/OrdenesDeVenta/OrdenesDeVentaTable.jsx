@@ -15,7 +15,6 @@ export default function OrdenesDeVentaTable(props) {
     const [ordenes, handleOrdenes] = useState([]);
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
-    const nombreEmpresa = !!props.empresa ? props.empresa.nombreEmpresa : '';
     const classes = tableStyle();
     const emptyRows = ordenesPorPagina - Math.min(ordenesPorPagina, ordenes.length - pagina * ordenesPorPagina);
 
@@ -29,9 +28,9 @@ export default function OrdenesDeVentaTable(props) {
     };
 
     useEffect(() => {
-        RestService.GET.findOrdenesDeVentaByEmpresa(nombreEmpresa)
+        RestService.GET.findAllOrdenesDeVentaByCreador(props.usuario.id)
             .then(response => handleOrdenes(response.data))
-    }, [nombreEmpresa])
+    }, [props.usuario.id])
 
     return (
          <div className="container row justify-content-center">
