@@ -5,10 +5,11 @@ import { Dialog, Button, DialogTitle, DialogContent, IconButton } from '@materia
 import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 import CloseIcon from '@material-ui/icons/Close';
 import NavigationBar from "../NavigationBar/NavigationBar";
+import { properties } from "../../Properties/properties.js";
 
 export default function OrdenesDeVenta(props)  {
 
-    const empresa = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginEmpresa");
+    const usuario = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginEmpresa");
     const [show, setShow] = useState(false);
     const handleClose = () => {
       setShow(false)
@@ -20,7 +21,7 @@ export default function OrdenesDeVenta(props)  {
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <OrdenesDeVentaTable empresa={empresa}/>
+                        <OrdenesDeVentaTable usuario={usuario}/>
                         <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={() => setShow(true)}>
                             Cargar nueva
                         </Button>
@@ -36,7 +37,7 @@ export default function OrdenesDeVenta(props)  {
                     name={"Ordenes de Venta"}
                     isUser={false}
                     content={content()}
-                    usuario={empresa}
+                    usuario={usuario}
                 />
                 <Dialog
                     color="primary"
@@ -47,13 +48,13 @@ export default function OrdenesDeVenta(props)  {
                         cursor: 'move', display: 'flex',
                         justifyContent: 'space-between', alignItems: 'center'
                     }} id="draggable-dialog-title">
-                        <h3>Nueva orden de venta</h3>
+                        <h3>{properties.labels.nuevaOrden}</h3>
                         <IconButton onClick={handleClose}>
                             <CloseIcon />
                         </IconButton>
                     </DialogTitle>
                     <DialogContent>
-                    <OrdenDeVentaForm empresa={empresa}/>
+                    <OrdenDeVentaForm usuario={usuario} empresa={props.location.state ? props.location.state.empresa : ''}/>
                     </DialogContent>
                 </Dialog>
             </div>
