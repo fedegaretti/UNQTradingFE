@@ -9,7 +9,7 @@ export default function ComprarAcciones(props)  {
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <ComprarAccionesTable/>
+                        <ComprarAccionesTable persona={persona}/>
                     </div>
                 </div>
             </div>
