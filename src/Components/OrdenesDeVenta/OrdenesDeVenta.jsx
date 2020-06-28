@@ -5,6 +5,7 @@ import { Dialog, Button, DialogTitle, DialogContent, IconButton } from '@materia
 import {PaperDraggable} from "../MaterialDesign/PaperDraggable.jsx"
 import CloseIcon from '@material-ui/icons/Close';
 import NavigationBar from "../NavigationBar/NavigationBar";
+import { properties } from "../../Properties/properties.js";
 
 export default function OrdenesDeVenta(props)  {
 
@@ -48,7 +49,7 @@ export default function OrdenesDeVenta(props)  {
                         cursor: 'move', display: 'flex',
                         justifyContent: 'space-between', alignItems: 'center'
                     }} id="draggable-dialog-title">
-                        <h3>Nueva orden de venta</h3>
+                        <h3>{properties.labels.nuevaOrden}</h3>
                         <IconButton onClick={handleClose}>
                             <CloseIcon />
                         </IconButton>

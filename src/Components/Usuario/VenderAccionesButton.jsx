@@ -23,7 +23,7 @@ export default function VenderAccionesButton(props) {
                     cursor: 'move', display: 'flex',
                     justifyContent: 'space-between', alignItems: 'center'
                 }} id="draggable-dialog-title">
-                    <h3>Vender acciones</h3>
+                    <h3>{properties.labels.nuevaOrden}</h3>
                     <IconButton onClick={() => setShow(false)}>
                         <CloseIcon />
                     </IconButton>
