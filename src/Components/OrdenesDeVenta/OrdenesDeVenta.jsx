@@ -8,7 +8,7 @@ import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function OrdenesDeVenta(props)  {
 
-    const empresa = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginEmpresa");
+    const usuario = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginEmpresa");
     const [show, setShow] = useState(false);
     const handleClose = () => {
       setShow(false)
@@ -16,11 +16,12 @@ export default function OrdenesDeVenta(props)  {
     };
     
     const content = () => {
+        console.log(props)
         return (
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <OrdenesDeVentaTable empresa={empresa}/>
+                        <OrdenesDeVentaTable empresa={usuario}/>
                         <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={() => setShow(true)}>
                             Cargar nueva
                         </Button>
@@ -36,7 +37,7 @@ export default function OrdenesDeVenta(props)  {
                     name={"Ordenes de Venta"}
                     isUser={false}
                     content={content()}
-                    usuario={empresa}
+                    usuario={usuario}
                 />
                 <Dialog
                     color="primary"
@@ -53,7 +54,7 @@ export default function OrdenesDeVenta(props)  {
                         </IconButton>
                     </DialogTitle>
                     <DialogContent>
-                    <OrdenDeVentaForm empresa={empresa}/>
+                    <OrdenDeVentaForm usuario={usuario} empresa={props.location.state ? props.location.state.empresa : ''}/>
                     </DialogContent>
                 </Dialog>
             </div>

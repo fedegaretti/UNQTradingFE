@@ -80,9 +80,11 @@ export default function OrdenDeVentaForm(props) {
     );
 
     function save() {
+        console.log(props)
         if (accept) {
             RestService.POST.saveOrdenDeVenta({
-                nombreEmpresa : props.empresa.nombreEmpresa,
+                creadorId : props.usuario.id,
+                nombreEmpresa : props.empresa,
                 cantidadDeAcciones : cantidad,
                 precio : precio,
                 fechaDeVencimiento : vencimiento
