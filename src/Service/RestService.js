@@ -13,6 +13,8 @@ const LOGIN_EMPRESA = "/empresa/login?"
 const REGISTRAR_EMPRESA = "/empresa/register"
 const LOGIN_PERSONA = "/usuario/login?"
 const CARGAR_SALDO = "/usuario/cargarSaldo?"
+const OBTENER_SALDO_PERSONA = "/usuario/obtenerSaldo?usuarioId="
+const OBTENER_SALDO_EMPRESA = "/empresa/obtenerSaldo?usuarioId="
 
 export const RestService = {
     GET: {
@@ -30,6 +32,12 @@ export const RestService = {
         },
         findUser : function(userId){
             return axios.get(API_URL + FIND_USUARIO + userId)
+        },
+        getSaldoPersona : function (userId) {
+            return axios.get(API_URL + OBTENER_SALDO_PERSONA + userId)
+        },
+        getSaldoEmpresa : function (userId) {
+            return axios.get(API_URL + OBTENER_SALDO_EMPRESA + userId)
         }
 
     },

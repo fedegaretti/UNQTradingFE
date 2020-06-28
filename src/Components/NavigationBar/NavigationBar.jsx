@@ -155,7 +155,10 @@ export default function NavigationBar(props) {
                     <Typography variant="h6" noWrap>
                         {props.name}
                     </Typography>
-                    <Saldo/>
+                    <Saldo
+                        usuario={props.usuario}
+                        isUser={props.isUser}
+                    />
                 </Toolbar>
             </AppBar>
             <Drawer
