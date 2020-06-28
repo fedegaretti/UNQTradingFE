@@ -21,6 +21,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import {Link} from "react-router-dom";
 import {properties} from "../../Properties/properties";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Saldo from '../Saldo';
 
 const drawerWidth = 240;
 
@@ -154,6 +155,10 @@ export default function NavigationBar(props) {
                     <Typography variant="h6" noWrap>
                         {props.name}
                     </Typography>
+                    <Saldo
+                        usuario={props.usuario}
+                        isUser={props.isUser}
+                    />
                 </Toolbar>
             </AppBar>
             <Drawer
