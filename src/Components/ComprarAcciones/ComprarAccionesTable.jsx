@@ -5,7 +5,7 @@ import ComprarAccionesButton from './ComprarAccionesButton';
 import { TablePaginationActions} from "../Common/Table.jsx";
 import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
-export default function ComprarAccionesTable() {
+export default function ComprarAccionesTable(props) {
     const [ordenes, handleOrdenes] = useState([])
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
@@ -79,7 +79,7 @@ export default function ComprarAccionesTable() {
                     <StyledTableCell align="center">{row.precio}</StyledTableCell>
                     <StyledTableCell align="center">{row.fechaDeVencimiento}</StyledTableCell>
                     <StyledTableCell align="center">{row.empresa.nombreEmpresa}</StyledTableCell>
-                    <StyledTableCell aling="center">{<ComprarAccionesButton ordenId={row.id} usuarioId={1}/>}</StyledTableCell>
+                    <StyledTableCell aling="center">{<ComprarAccionesButton ordenId={row.id} usuarioId={props.persona.id}/>}</StyledTableCell>
                 </StyledTableRow>
         ))
     }

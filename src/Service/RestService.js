@@ -2,16 +2,20 @@ import axios from 'axios';
 
 const API_URL = "http://localhost:8080/api"
 const ORDENES_DE_VENTA ="/venta/all?nombreEmpresa="
+const ORDENES_DE_VENTA_BY_CREADOR ="/venta/usuario/all?creadorId="
 const SAVE_ORDEN_VENTA = "/venta/save"
 const SAVE_USUARIO = "/usuario/save"
 const COMPRAR_ACCIONES = "/usuario/buy?"
 const FIND_ORDEN_DE_VENTA = "/venta/find?ordenId="
 const FIND_ACCIONES = "/usuario/acciones?usuarioId="
 const FIND_ORDENES_DE_VENTA = "/venta/ordenes"
+const FIND_USUARIO = "/usuario/find?usuarioId="
 const LOGIN_EMPRESA = "/empresa/login?"
 const REGISTRAR_EMPRESA = "/empresa/register"
 const LOGIN_PERSONA = "/usuario/login?"
 const CARGAR_SALDO = "/usuario/cargarSaldo?"
+const OBTENER_SALDO_PERSONA = "/usuario/obtenerSaldo?usuarioId="
+const OBTENER_SALDO_EMPRESA = "/empresa/obtenerSaldo?usuarioId="
 
 export const RestService = {
     GET: {
@@ -26,7 +30,18 @@ export const RestService = {
         },
         findAllOrdenesDeVenta : function(){
             return axios.get(API_URL + FIND_ORDENES_DE_VENTA )
+        },
+        findAllOrdenesDeVentaByCreador : function(creadorId){
+            return axios.get(API_URL + ORDENES_DE_VENTA_BY_CREADOR + creadorId )
+        },
+        findUser : function(userId){
+            return axios.get(API_URL + FIND_USUARIO + userId)
+        },
+        getSaldo : function (userId, isUser) {
+            let url = isUser ? OBTENER_SALDO_PERSONA : OBTENER_SALDO_EMPRESA
+            return axios.get(API_URL + url + userId)
         }
+
     },
     POST: {
         saveOrdenDeVenta: function(ordenDeVenta) {
