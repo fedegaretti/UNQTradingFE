@@ -3,7 +3,7 @@ import { RestService } from '../Service/RestService'
 import Typography from '@material-ui/core/Typography';
 import axios from "axios";
 
-export default function Saldo(props){
+export default function Saldo(props, ref){
     const [saldo, setSaldo] = useState()
     const usuarioId = !!props.usuario ? props.usuario.id : '';
     const getSaldo = () => {
@@ -24,7 +24,7 @@ export default function Saldo(props){
 
     return(
         <Typography variant="h6" style={{marginLeft: "70vw"}}>
-            Saldo: {saldo}
+            Saldo: ${saldo}
         </Typography>
     )
 }
