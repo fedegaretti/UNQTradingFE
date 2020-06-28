@@ -8,6 +8,7 @@ import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableFooter from "@material-ui/core/TableFooter";
+import VenderAccionesButton from './VenderAccionesButton';
 import {TablePaginationActions } from "../Common/Table.jsx";
 import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
@@ -42,6 +43,7 @@ export default function AccionesTable(props) {
                              <StyledTableCell align="center">Empresa</StyledTableCell>
                              <StyledTableCell align="center">Cantidad</StyledTableCell>
                              <StyledTableCell align="center">Fecha Última Compra</StyledTableCell>
+                             <StyledTableCell align="center"></StyledTableCell>
                          </TableRow>
                      </TableHead>
                      <TableBody>
@@ -83,6 +85,7 @@ export default function AccionesTable(props) {
                     <StyledTableCell align="center">{row.empresa.nombreEmpresa}</StyledTableCell>
                     <StyledTableCell align="center">{row.cantidad}</StyledTableCell>
                     <StyledTableCell align="center">{row.fechaUltimaCompra}</StyledTableCell>
+                    <StyledTableCell align="center">{<VenderAccionesButton usuario = {props.usuario} empresa = {row.empresa.nombreEmpresa} />}</StyledTableCell>
                 </StyledTableRow>
         ))
     }

@@ -14,7 +14,8 @@ export const properties = {
         ingresar: "Ingresar",
         noEstasRegistrado: "No estas registrado ?",
         olvideContraseña: "Olvidé mi contraseña",
-        registroPersonaTitle: "Registrar Persona"
+        registroPersonaTitle: "Registrar Persona",
+        nuevaOrden: "Nueva orden de venta"
     },
     misAcciones: {
         path: '/acciones',
