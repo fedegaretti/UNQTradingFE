@@ -22,6 +22,7 @@ import {Link} from "react-router-dom";
 import {properties} from "../../Properties/properties";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Saldo from '../Saldo';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 240;
 
@@ -91,8 +92,8 @@ export default function NavigationBar(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const usuario = [properties.misAcciones, properties.comprarAcciones, properties.cargarSaldo];
-    const empresa = [properties.ordenesVenta];
+    const usuario = [properties.misAcciones, properties.comprarAcciones, properties.cargarSaldo, properties.logout];
+    const empresa = [properties.ordenesVenta, properties.logout];
     const menu = props.isUser ? usuario : empresa;
 
     function getIcon(text) {
@@ -105,6 +106,8 @@ export default function NavigationBar(props) {
                 return <InsertChartIcon color="primary"/>;
             case 'CreditCardIcon':
                 return <CreditCardIcon color="primary"/>;
+            case 'ExitToAppIcon':
+                return <ExitToAppIcon color="primary"/>
             default:
                 return;
         }
