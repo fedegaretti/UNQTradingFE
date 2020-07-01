@@ -11,8 +11,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import PersonIcon from '@material-ui/icons/Person';
 import BusinessIcon from '@material-ui/icons/Business';
-import AddIcon from '@material-ui/icons/Add';
-import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 import { grey } from '@material-ui/core/colors';
 import { properties } from "../../Properties/properties.js";
@@ -34,10 +32,6 @@ function SimpleDialog(props) {
   const handleClose = () => {
     onClose(selectedValue);
   };
-
-  const handleListItemClick = (value) => {
-    onClose(value);
-   };
 
   const goLoginPersona = () => {
     history.push("/LoginPersona");
