@@ -8,7 +8,7 @@ import { properties } from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
 import { RestService } from '../../Service/RestService'
 
-export default function RegistroForm() {
+export default function RegistroForm(props) {
 
     const { values, bind } = useForm({
         nombreEmpresa: "",
@@ -290,6 +290,9 @@ export default function RegistroForm() {
                     severity: "success",
                     message: "Registro exitoso!!"
                 })
+                setTimeout(() => {
+                    props.history.push('/LoginEmpresa')
+                }, 3000)
             }).catch((error) => {
                 setAlert({
                     show: true,
