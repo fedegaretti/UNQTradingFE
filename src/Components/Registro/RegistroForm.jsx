@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { useForm } from '../Common/GenericHookForm.jsx'
-import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle,
     Card, CardContent, Grid, AppBar, Toolbar, Typography} from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
 import { RestService } from '../../Service/RestService.js';
+import { TerminosYCondiciones } from "../Common/TerminosYCondiciones.jsx";
 
 export default function RegistroForm() {
 
@@ -174,10 +175,7 @@ export default function RegistroForm() {
                                     scroll="body">
                                     <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
                                         <DialogContent dividers={true}>
-                                            <DialogContentText
-                                                id="scroll-dialog-description">
-                                                {properties.labels.terminosDetalle}
-                                            </DialogContentText>
+                                            <TerminosYCondiciones/>
                                         </DialogContent>
                                     <DialogActions>
                                         <Button onClick={() => setShow(false)} color="primary">
