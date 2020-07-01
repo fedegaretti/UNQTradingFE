@@ -1,10 +1,11 @@
 export const properties = {
     labels: {
         terminosTitle: "Términos y Condiciones",
-        terminosDetalle: "Cras mattis consectetur purus sit amet fermentum. " +
-        "Cras justo odio, dapibus ac facilisis in, egestas eget quam." +
-        "Morbi leo risus, porta ac consectetur ac, vestibulum at eros."+
-        "Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,",
+        terminos1: "1) Acepto que UNQTrading haga uso de mis datos personales con fines estadisticos." ,
+        terminos2: "2) UNQTrading no utilizará ningún dato personal con fines financieros." ,
+        terminos3: "3) UNQTrading guardará todos los datos transaccionales relacionados a su cuenta.",
+        terminos4: "4) UNQTrading no se hará responsable por el uso indebido de la aplicación.",
+        terminos5: "5) UNQTrading no se hará responsable por las perdidas de dinero que el uso de la misma pudiese generarle.",
         comprar: "Comprar",
         aceptarTerminos: "Acepto los terminos y Condiciones",
         comprarAcciones:"Comprar Acciones",

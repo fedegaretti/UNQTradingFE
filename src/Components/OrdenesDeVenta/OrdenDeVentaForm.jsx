@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import { RestService } from '../../Service/RestService'
-import { TextField, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { properties } from "../../Properties/properties.js"
 import { formStyles } from "../MaterialDesign/Styles"
+import { TerminosYCondiciones } from "../Common/TerminosYCondiciones.jsx";
 
 export default function OrdenDeVentaForm(props) {
 
@@ -65,10 +66,7 @@ export default function OrdenDeVentaForm(props) {
                 scroll="body">
                 <DialogTitle id="scroll-dialog-title">{properties.labels.terminosTitle}</DialogTitle>
                 <DialogContent dividers={true}>
-                    <DialogContentText
-                        id="scroll-dialog-description">
-                            {properties.labels.terminosDetalle}
-                    </DialogContentText>
+                    <TerminosYCondiciones/>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setShow(false)} color="primary">
@@ -94,12 +92,12 @@ export default function OrdenDeVentaForm(props) {
                     severity: "success",
                     message: "Orden cargada correctamente!"
                 })
-            }).catch(() => {
+            }).catch((error) => {
                 setAlert({
                     show: true,
                     severity: "error",
                     variant: "filled",
-                    message: "Ocurrio un error al cargar la orden. Intente nuevamente"
+                    message: error.response.data.message
                 })
             })
         } else {
