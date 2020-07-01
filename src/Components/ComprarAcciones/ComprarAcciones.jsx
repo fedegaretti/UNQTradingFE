@@ -3,7 +3,7 @@ import ComprarAccionesTable from './ComprarAccionesTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
 export default function ComprarAcciones(props)  {
-    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginUsuario");
+    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginPersona");
     const content = () => {
         return (
             <div className="container">

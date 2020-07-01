@@ -37,5 +37,10 @@ export const properties = {
         path: '/CargarSaldo',
         icon: 'CreditCardIcon',
         text: 'Cargar saldo'
+    },
+    logout: {
+        path: '/HomePage',
+        icon: 'ExitToAppIcon',
+        text: 'Salir'
     }
 }
