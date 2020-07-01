@@ -94,12 +94,12 @@ export default function OrdenDeVentaForm(props) {
                     severity: "success",
                     message: "Orden cargada correctamente!"
                 })
-            }).catch(() => {
+            }).catch((error) => {
                 setAlert({
                     show: true,
                     severity: "error",
                     variant: "filled",
-                    message: "Ocurrio un error al cargar la orden. Intente nuevamente"
+                    message: error.response.data.message
                 })
             })
         } else {
