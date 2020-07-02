@@ -11,6 +11,7 @@ import StickyFooter from './Components/Footer/Footer.jsx';
 import LoginEmpresa from "./Components/LoginEmpresa/LoginEmpresa";
 import LoginPersona from './Components/Login/LoginPersona.jsx';
 import CargarSaldo from "./Components/CargarSaldo/CargarSaldo";
+import HomePage from "./Components/HomePage/HomePage";
 
 class App extends Component {
   render() {
@@ -19,7 +20,7 @@ class App extends Component {
         <div className="Site-content">
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={OrdenesDeVenta} />
+              <Route exact path="/" component={HomePage} />
               <Route path="/ordenesVenta" component={OrdenesDeVenta} />
               <Route path="/acciones" component={Acciones} />
               <Route path="/comprar" component={ComprarAcciones} />
@@ -28,6 +29,7 @@ class App extends Component {
               <Route path="/LoginPersona" component ={LoginPersona} />
               <Route path="/LoginEmpresa" component={LoginEmpresa} />
               <Route path="/CargarSaldo" component={CargarSaldo} />
+              <Route path="/HomePage" component={HomePage}/>
             </Switch>
           </BrowserRouter>
           </div>
