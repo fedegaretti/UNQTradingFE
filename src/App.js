@@ -24,16 +24,16 @@ class App extends Component {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <EmpresaRoute path="/ordenesVenta" component={OrdenesDeVenta} />
-              <PersonaRoute path="/acciones" component={Acciones} />
-              <PersonaRoute path="/comprar" component={ComprarAcciones} />
               <Route path="/registro" component={Registro} />
               <Route path="/RegistrarEmpresa" component={RegistroEmpresa} />
               <Route path="/LoginPersona" component ={LoginPersona} />
               <Route path="/LoginEmpresa" component={LoginEmpresa} />
-              <PersonaRoute path="/CargarSaldo" component={CargarSaldo} />
               <Route path="/HomePage" component={HomePage}/>
               <Route path="/Logout" component={Logout}/>
+              <EmpresaRoute path="/ordenesVenta" component={OrdenesDeVenta} />
+              <PersonaRoute path="/acciones" component={Acciones} />
+              <PersonaRoute path="/comprar" component={ComprarAcciones} />
+              <PersonaRoute path="/CargarSaldo" component={CargarSaldo} />
             </Switch>
           </BrowserRouter>
           </div>
