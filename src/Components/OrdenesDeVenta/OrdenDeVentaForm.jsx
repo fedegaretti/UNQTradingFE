@@ -16,6 +16,7 @@ export default function OrdenDeVentaForm(props) {
     const [show, setShow] = useState(false)
     const [alert, setAlert] = useState({ show: false, variant: "danger", message: '', icon: false });
     const classes = formStyles();
+    const usuario = JSON.parse(localStorage.getItem("user"))
 
     return (
         <div>
@@ -80,7 +81,7 @@ export default function OrdenDeVentaForm(props) {
     function save() {
         if (accept) {
             RestService.POST.saveOrdenDeVenta({
-                creadorId : props.usuario.id,
+                creadorId : usuario.id,
                 nombreEmpresa : props.empresa,
                 cantidadDeAcciones : cantidad,
                 precio : precio,

@@ -12,6 +12,9 @@ import LoginEmpresa from "./Components/LoginEmpresa/LoginEmpresa";
 import LoginPersona from './Components/Login/LoginPersona.jsx';
 import CargarSaldo from "./Components/CargarSaldo/CargarSaldo";
 import HomePage from "./Components/HomePage/HomePage";
+import Logout from './Components/Logout/Logout.jsx';
+import EmpresaRoute from './Components/PrivateRoutes/EmpresaRoute.jsx';
+import PersonaRoute from './Components/PrivateRoutes/PersonaRoute.jsx';
 
 class App extends Component {
   render() {
@@ -21,15 +24,16 @@ class App extends Component {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/ordenesVenta" component={OrdenesDeVenta} />
-              <Route path="/acciones" component={Acciones} />
-              <Route path="/comprar" component={ComprarAcciones} />
+              <EmpresaRoute path="/ordenesVenta" component={OrdenesDeVenta} />
+              <PersonaRoute path="/acciones" component={Acciones} />
+              <PersonaRoute path="/comprar" component={ComprarAcciones} />
               <Route path="/registro" component={Registro} />
               <Route path="/RegistrarEmpresa" component={RegistroEmpresa} />
               <Route path="/LoginPersona" component ={LoginPersona} />
               <Route path="/LoginEmpresa" component={LoginEmpresa} />
-              <Route path="/CargarSaldo" component={CargarSaldo} />
+              <PersonaRoute path="/CargarSaldo" component={CargarSaldo} />
               <Route path="/HomePage" component={HomePage}/>
+              <Route path="/Logout" component={Logout}/>
             </Switch>
           </BrowserRouter>
           </div>

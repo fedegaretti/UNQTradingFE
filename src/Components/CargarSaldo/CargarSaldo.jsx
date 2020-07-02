@@ -8,8 +8,8 @@ import {RestService} from "../../Service/RestService";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Collapse from "@material-ui/core/Collapse";
 
-export default function CargarSaldo(props) {
-    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginPersona");
+export default function CargarSaldo() {
+    const persona = JSON.parse(localStorage.getItem('user'))
     const theme = useTheme();
     const classes = loginEmpresaStyle(theme)
     const message = "El saldo debe ser mayor a 0"

@@ -39,7 +39,7 @@ export const properties = {
         text: 'Cargar saldo'
     },
     logout: {
-        path: '/HomePage',
+        path: '/Logout',
         icon: 'ExitToAppIcon',
         text: 'Salir'
     }
