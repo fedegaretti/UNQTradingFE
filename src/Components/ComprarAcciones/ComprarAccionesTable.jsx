@@ -9,6 +9,7 @@ export default function ComprarAccionesTable(props) {
     const [ordenes, handleOrdenes] = useState([])
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
+    const usuario = JSON.parse(localStorage.getItem("user"))
     const classes = tableStyle();
     const emptyRows = ordenesPorPagina - Math.min(ordenesPorPagina, ordenes.length - pagina * ordenesPorPagina);
 
@@ -73,7 +74,7 @@ export default function ComprarAccionesTable(props) {
     function renderOrdenesDeVenta () {
         return (ordenesPorPagina > 0
             ? ordenes.slice(pagina * ordenesPorPagina, pagina * ordenesPorPagina + ordenesPorPagina)
-            : ordenes).map((row) => (
+            : ordenes).filter((row) => (row.creador.id !== usuario.id)).map((row) => (
                 <StyledTableRow>
                     <StyledTableCell align="center">{row.cantidadDeAcciones}</StyledTableCell>
                     <StyledTableCell align="center">{row.precio}</StyledTableCell>
