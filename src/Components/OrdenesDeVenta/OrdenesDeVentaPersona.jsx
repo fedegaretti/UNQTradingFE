@@ -1,7 +1,6 @@
 import React from 'react';
 import OrdenesDeVentaPersonaTable from './OrdenesDeVentaPersonaTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
-import { properties } from "../../Properties/properties.js";
 
 export default function OrdenesDeVentaPersona(props)  {
 
@@ -22,7 +21,7 @@ export default function OrdenesDeVentaPersona(props)  {
     return (
         <div className="App">
                 <NavigationBar
-                    name={"Ordenes de Venta"}
+                    name={"Mis ordenes de venta"}
                     isUser={true}
                     content={content()}
                     usuario={usuario}

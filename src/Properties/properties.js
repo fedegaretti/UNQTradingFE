@@ -46,6 +46,6 @@ export const properties = {
     ordenesVentaPersona: {
         path: '/ordenesVentaPersona',
         icon: 'InsertChartIcon',
-        text: 'Ordenes de venta'
+        text: 'Mis ordenes de venta'
     }
 }
