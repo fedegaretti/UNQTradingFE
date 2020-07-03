@@ -42,5 +42,10 @@ export const properties = {
         path: '/Logout',
         icon: 'ExitToAppIcon',
         text: 'Salir'
+    },
+    ordenesVentaPersona: {
+        path: '/ordenesVentaPersona',
+        icon: 'InsertChartIcon',
+        text: 'Mis ordenes de venta'
     }
 }

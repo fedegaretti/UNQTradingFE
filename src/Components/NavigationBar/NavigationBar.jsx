@@ -92,7 +92,7 @@ export default function NavigationBar(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const usuario = [properties.misAcciones, properties.comprarAcciones, properties.cargarSaldo, properties.logout];
+    const usuario = [properties.misAcciones, properties.comprarAcciones, properties.cargarSaldo, properties.ordenesVentaPersona, properties.logout];
     const empresa = [properties.ordenesVenta, properties.logout];
     const menu = props.isUser ? usuario : empresa;
 

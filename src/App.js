@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import OrdenesDeVenta from './Components/OrdenesDeVenta/OrdenesDeVenta.jsx'
+import OrdenesDeVentaPersona from './Components/OrdenesDeVenta/OrdenesDeVentaPersona.jsx'
 import ComprarAcciones from './Components/ComprarAcciones/ComprarAcciones.jsx'
 import Acciones from './Components/Usuario/Acciones.jsx';
 import Registro from './Components/Registro/RegistroForm.jsx';
@@ -31,6 +32,7 @@ class App extends Component {
               <Route path="/HomePage" component={HomePage}/>
               <Route path="/Logout" component={Logout}/>
               <EmpresaRoute path="/ordenesVenta" component={OrdenesDeVenta} />
+              <PersonaRoute path="/ordenesVentaPersona" component={OrdenesDeVentaPersona} />
               <PersonaRoute path="/acciones" component={Acciones} />
               <PersonaRoute path="/comprar" component={ComprarAcciones} />
               <PersonaRoute path="/CargarSaldo" component={CargarSaldo} />
