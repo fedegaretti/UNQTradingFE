@@ -23,6 +23,7 @@ import {properties} from "../../Properties/properties";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Saldo from '../Saldo';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {width} from "@material-ui/system";
 
 const drawerWidth = 240;
 
@@ -178,6 +179,13 @@ export default function NavigationBar(props) {
                 }}
             >
                 <div className={classes.toolbar}>
+                    <div style={{width: '-moz-available'}}>
+                        <img
+                            src={require('../../Images/logo100.png')}
+                            style={{width: '30%'}}
+                        />
+                    </div>
+
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
