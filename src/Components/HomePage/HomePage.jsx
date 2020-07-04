@@ -41,7 +41,7 @@ export default function HomePage() {
                         <img
                             src={require('../../Images/trading5.png')}
                             alt="trading5"
-                            style= {{ 
+                             style= {{ 
                                 maxWidth: "100%",
                                 height: "auto",
                                 width: "auto"}}

@@ -21,7 +21,7 @@ import PersonaRoute from './Components/PrivateRoutes/PersonaRoute.jsx';
 class App extends Component {
   render() {
     return (
-      <Grid container>
+      <div container>
         <div className="Site-content">
           <BrowserRouter>
             <Switch>
@@ -41,7 +41,7 @@ class App extends Component {
           </BrowserRouter>
         </div>
         <StickyFooter/>
-      </Grid>
+      </div>
     );
   }
 }

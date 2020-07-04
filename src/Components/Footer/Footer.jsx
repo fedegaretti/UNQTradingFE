@@ -23,7 +23,6 @@ export default function StickyFooter() {
       <Grid container style={{
           height: '10vh',
           backgroundColor: grey[200],
-          position: 'fixed',
           bottom: '0'
       }} alignItems="center" justify="center">
           <Grid item xs={4}>
