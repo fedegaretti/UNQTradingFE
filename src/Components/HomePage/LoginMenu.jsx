@@ -53,8 +53,8 @@ export default function LoginMenu() {
 
 
   return (
-  <div>
-        <Fab style={{marginLeft: "55vw"}} variant="outlined" color="primary" onClick={handleClick}>
+      <div style={{float: 'right'}}>
+        <Fab variant="outlined" color="primary" onClick={handleClick}>
           Ingresar
         </Fab>
         <StyledMenu
@@ -66,18 +66,18 @@ export default function LoginMenu() {
               >
                 <MenuItem onClick={goLoginPersona}>
                   <ListItemIcon>
-                    <PersonIcon fontSize="small" />
+                    <PersonIcon fontSize="small" color="primary"/>
                   </ListItemIcon>
                   <ListItemText primary="Persona" />
                 </MenuItem>
                 <MenuItem onClick={goLoginEmpresa}>
                   <ListItemIcon>
-                    <BusinessIcon fontSize="small" />
+                    <BusinessIcon fontSize="small" color="primary"/>
                   </ListItemIcon>
                   <ListItemText primary="Empresa" />
                 </MenuItem>
               </StyledMenu>
-  </div>
+      </div>
 
 
   );

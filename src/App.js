@@ -13,6 +13,7 @@ import LoginEmpresa from "./Components/LoginEmpresa/LoginEmpresa";
 import LoginPersona from './Components/Login/LoginPersona.jsx';
 import CargarSaldo from "./Components/CargarSaldo/CargarSaldo";
 import HomePage from "./Components/HomePage/HomePage";
+import Grid from "@material-ui/core/Grid";
 import Logout from './Components/Logout/Logout.jsx';
 import EmpresaRoute from './Components/PrivateRoutes/EmpresaRoute.jsx';
 import PersonaRoute from './Components/PrivateRoutes/PersonaRoute.jsx';
@@ -20,7 +21,7 @@ import PersonaRoute from './Components/PrivateRoutes/PersonaRoute.jsx';
 class App extends Component {
   render() {
     return (
-      <div className="App Site">
+      <Grid container>
         <div className="Site-content">
           <BrowserRouter>
             <Switch>
@@ -38,9 +39,9 @@ class App extends Component {
               <PersonaRoute path="/CargarSaldo" component={CargarSaldo} />
             </Switch>
           </BrowserRouter>
-          </div>
-          <StickyFooter/>
-      </div>
+        </div>
+        <StickyFooter/>
+      </Grid>
     );
   }
 }

@@ -48,7 +48,7 @@ export const footerStyle = makeStyles((theme) => ({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      minHeight: 'auto',
+      height: '10vh',
     },
     main: {
       marginTop: theme.spacing(8),
