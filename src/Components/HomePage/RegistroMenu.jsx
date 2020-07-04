@@ -54,30 +54,30 @@ export default function RegistroMenu() {
   };
 
   return (
-  <div>
-    <Fab style={{marginLeft: "1vw"}} variant="outlined" color="primary" onClick={handleClick}>
-        Registrarse
-    </Fab>
-    <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-    >
-        <MenuItem onClick={goRegistroPersona}>
-            <ListItemIcon>
-                <PersonIcon fontSize="small" />
-            </ListItemIcon>
-                <ListItemText primary="Persona" />
-        </MenuItem>
-        <MenuItem onClick={goRegistroEmpresa}>
-            <ListItemIcon>
-                <BusinessIcon fontSize="small" />
-            </ListItemIcon>
-                <ListItemText primary="Empresa" />
-        </MenuItem>
-    </StyledMenu>
-  </div>
+      <div>
+        <Fab style={{marginLeft: "1vw"}} variant="outlined" color="primary" onClick={handleClick}>
+            Registrarse
+        </Fab>
+        <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+        >
+            <MenuItem onClick={goRegistroPersona}>
+                <ListItemIcon>
+                    <PersonIcon fontSize="small" color="primary"/>
+                </ListItemIcon>
+                    <ListItemText primary="Persona" />
+            </MenuItem>
+            <MenuItem onClick={goRegistroEmpresa}>
+                <ListItemIcon>
+                    <BusinessIcon fontSize="small" color="primary"/>
+                </ListItemIcon>
+                    <ListItemText primary="Empresa" />
+            </MenuItem>
+        </StyledMenu>
+      </div>
   );
 }
