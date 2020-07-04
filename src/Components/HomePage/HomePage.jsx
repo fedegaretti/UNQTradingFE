@@ -16,9 +16,10 @@ export default function HomePage() {
                             src={require('../../Images/tradingunq1.png')}
                             alt="tradingunq1"
                             style= {{ 
-                                maxWidth: "100%",
-                                height: "auto",
-                                width: "auto"}}
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover"
+                               }}
                         />
                         <Carousel.Caption>
                             <h2 style={{fontFamily: 'Playfair Display', textShadow: '0px 0px 3px #000000'}}>UNQ Trading | Inversiones al alcance de todos</h2>
@@ -29,9 +30,10 @@ export default function HomePage() {
                             src={require('../../Images/trading3.jpg')}
                             alt="trading3"
                             style= {{ 
-                                maxWidth: "100%",
-                                height: "auto",
-                                width: "auto"}}
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover"
+                               }}
                         />
                         <Carousel.Caption>
                             <h2 style={{fontFamily: 'Playfair Display', textShadow: '0px 0px 3px #000000'}}>UNQ Trading | El mercado de acciones nunca estuvo tan fácil</h2>
@@ -41,10 +43,11 @@ export default function HomePage() {
                         <img
                             src={require('../../Images/trading5.png')}
                             alt="trading5"
-                             style= {{ 
-                                maxWidth: "100%",
-                                height: "auto",
-                                width: "auto"}}
+                            style= {{ 
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover"
+                               }}
                         />
                         <Carousel.Caption>
                             <h2 style={{fontFamily: 'Playfair Display', textShadow: '0px 0px 3px #000000'}}>UNQ Trading | Tu lugar para invertir</h2>
