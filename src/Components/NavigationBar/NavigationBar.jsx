@@ -23,7 +23,6 @@ import {properties} from "../../Properties/properties";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Saldo from '../Saldo';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {width} from "@material-ui/system";
 
 const drawerWidth = 240;
 
