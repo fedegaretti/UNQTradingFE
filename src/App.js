@@ -20,7 +20,7 @@ import PersonaRoute from './Components/PrivateRoutes/PersonaRoute.jsx';
 class App extends Component {
   render() {
     return (
-      <div container>
+      <div className="Site" container>
         <div className="Site-content">
           <BrowserRouter>
             <Switch>
