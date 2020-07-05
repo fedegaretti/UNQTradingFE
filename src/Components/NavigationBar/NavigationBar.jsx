@@ -158,6 +158,9 @@ export default function NavigationBar(props) {
                     <Typography variant="h6" noWrap>
                         {props.name}
                     </Typography>
+                    <Typography style= {{marginLeft: "auto"}} variant="h6" noWrap>
+                        {props.isUser ? props.usuario.nombre + " " + props.usuario.apellido : props.usuario.nombreEmpresa}
+                    </Typography>
                     <Saldo
                         usuario={props.usuario}
                         isUser={props.isUser}
