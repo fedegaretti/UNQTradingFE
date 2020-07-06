@@ -9,7 +9,7 @@ import { properties } from "../../Properties/properties.js";
 
 export default function OrdenesDeVenta(props)  {
 
-    const usuario = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginEmpresa");
+    const usuario = JSON.parse(localStorage.getItem("user"))
     const [show, setShow] = useState(false);
     const handleClose = () => {
       setShow(false)
@@ -21,7 +21,7 @@ export default function OrdenesDeVenta(props)  {
             <div className="container">
                 <div className="row align-items-center pt-5">
                     <div className="col-sm pt-5">
-                        <OrdenesDeVentaTable usuario={usuario}/>
+                        <OrdenesDeVentaTable/>
                         <Button className="mt-2 mb-5" variant = "contained" color="primary" onClick={() => setShow(true)}>
                             Cargar nueva
                         </Button>
@@ -54,7 +54,7 @@ export default function OrdenesDeVenta(props)  {
                         </IconButton>
                     </DialogTitle>
                     <DialogContent>
-                    <OrdenDeVentaForm usuario={usuario} empresa={props.location.state ? props.location.state.empresa : ''}/>
+                    <OrdenDeVentaForm empresa={usuario.nombreEmpresa}/>
                     </DialogContent>
                 </Dialog>
             </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import {footerStyle} from '../MaterialDesign/Styles';
+import {Grid} from "@material-ui/core";
+import grey from "@material-ui/core/colors/grey";
 
 function Copyright() {
   return (
@@ -18,16 +18,21 @@ function Copyright() {
 }
 
 export default function StickyFooter() {
-  const classes = footerStyle();
 
   return (
-    <div className={classes.root}>
-      <footer className={classes.footer}>
-        <Container maxWidth="md">
-          <Typography variant="body1">UNQ Trading ®.</Typography>
-          <Copyright />
-        </Container>
-      </footer>
-    </div>
+      <Grid container style={{
+          height: '10vh',
+          backgroundColor: grey[200],
+          bottom: '0'
+      }} alignItems="center" justify="center">
+          <Grid item xs={4}>
+              <Grid item xs={12}>
+                  <Typography variant="body1">UNQ Trading ®.</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                  <Copyright />
+              </Grid>
+          </Grid>
+      </Grid>
   );
 }

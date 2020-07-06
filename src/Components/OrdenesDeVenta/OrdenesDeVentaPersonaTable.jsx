@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { RestService} from '../../Service/RestService'
-import { Paper, TableRow, TableBody, TableHead, Table, TableContainer, TablePagination, TableFooter} from "@material-ui/core";
-import ComprarAccionesButton from './ComprarAccionesButton';
-import { TablePaginationActions} from "../Common/Table.jsx";
+import React, {useEffect, useState} from 'react';
+import {RestService} from '../../Service/RestService'
+import {Paper} from "@material-ui/core";
+import TableRow from "@material-ui/core/TableRow";
+import TableBody from "@material-ui/core/TableBody";
+import TableHead from "@material-ui/core/TableHead";
+import Table from "@material-ui/core/Table";
+import TableContainer from "@material-ui/core/TableContainer";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableFooter from "@material-ui/core/TableFooter";
+import {TablePaginationActions } from "../Common/Table.jsx";
 import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
-export default function ComprarAccionesTable(props) {
-    const [ordenes, handleOrdenes] = useState([])
+export default function OrdenesDeVentaPersonaTable(props) {
+    const [ordenes, handleOrdenes] = useState([]);
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
-    const usuario = JSON.parse(localStorage.getItem("user"))
+    const usuario = !!props.usuario ? props.usuario : '';
     const classes = tableStyle();
     const emptyRows = ordenesPorPagina - Math.min(ordenesPorPagina, ordenes.length - pagina * ordenesPorPagina);
 
@@ -23,9 +29,9 @@ export default function ComprarAccionesTable(props) {
     };
 
     useEffect(() => {
-        RestService.GET.findAllOrdenesDeVenta()
+        RestService.GET.findAllOrdenesDeVentaByCreador(usuario.id)
             .then(response => handleOrdenes(response.data))
-    }, [])
+    }, [usuario.id])
 
     return (
          <div className="container row justify-content-center">
@@ -33,11 +39,11 @@ export default function ComprarAccionesTable(props) {
                  <Table className={classes.table} aria-label="custom pagination table">
                      <TableHead>
                          <TableRow>
-                             <StyledTableCell align="center">Cantidad de acciones</StyledTableCell>
-                             <StyledTableCell align="center">Precio</StyledTableCell>
-                             <StyledTableCell align="center">Fecha Vencimiento</StyledTableCell>
-                             <StyledTableCell align="center">Empresa</StyledTableCell>
-                             <StyledTableCell align="center"></StyledTableCell>
+                            <StyledTableCell align="center">Nombre Empresa</StyledTableCell>
+                            <StyledTableCell align="center">Cantidad de acciones</StyledTableCell>
+                            <StyledTableCell align="center">Precio</StyledTableCell>
+                            <StyledTableCell align="center">Fecha Creación</StyledTableCell>
+                            <StyledTableCell align="center">Fecha Vencimiento</StyledTableCell>
                          </TableRow>
                      </TableHead>
                      <TableBody>
@@ -74,13 +80,13 @@ export default function ComprarAccionesTable(props) {
     function renderOrdenesDeVenta () {
         return (ordenesPorPagina > 0
             ? ordenes.slice(pagina * ordenesPorPagina, pagina * ordenesPorPagina + ordenesPorPagina)
-            : ordenes).filter((row) => (row.creador.id !== usuario.id)).map((row) => (
+            : ordenes).map((row) => (
                 <StyledTableRow>
+                    <StyledTableCell align="center">{row.empresa.nombreEmpresa}</StyledTableCell>
                     <StyledTableCell align="center">{row.cantidadDeAcciones}</StyledTableCell>
                     <StyledTableCell align="center">{row.precio}</StyledTableCell>
+                    <StyledTableCell align="center">{row.fechaDeCreacion}</StyledTableCell>
                     <StyledTableCell align="center">{row.fechaDeVencimiento}</StyledTableCell>
-                    <StyledTableCell align="center">{row.empresa.nombreEmpresa}</StyledTableCell>
-                    <StyledTableCell aling="center">{<ComprarAccionesButton ordenId={row.id} usuarioId={props.persona.id}/>}</StyledTableCell>
                 </StyledTableRow>
         ))
     }

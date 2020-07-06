@@ -11,11 +11,11 @@ import TableFooter from "@material-ui/core/TableFooter";
 import {TablePaginationActions } from "../Common/Table.jsx";
 import { tableStyle, StyledTableCell, StyledTableRow  } from '../MaterialDesign/Styles';
 
-export default function OrdenesDeVentaTable(props) {
+export default function OrdenesDeVentaTable() {
     const [ordenes, handleOrdenes] = useState([]);
     const [pagina, setPagina] = React.useState(0);
     const [ordenesPorPagina, setOrdenesPorPagina] = React.useState(5);
-    const usuario = !!props.usuario ? props.usuario : '';
+    const usuario = JSON.parse(localStorage.getItem("user"))
     const classes = tableStyle();
     const emptyRows = ordenesPorPagina - Math.min(ordenesPorPagina, ordenes.length - pagina * ordenesPorPagina);
 

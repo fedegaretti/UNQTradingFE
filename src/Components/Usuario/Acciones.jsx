@@ -2,8 +2,8 @@ import React from 'react';
 import AccionesTable from './AccionesTable';
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-export default function Acciones(props)  {
-    const persona = !!props.location.state ? props.location.state.usuario : props.history.push("/LoginPersona");
+export default function Acciones()  {
+    const persona = JSON.parse(localStorage.getItem("user"))
     const content = () => {
         return (
             <div className="container">

@@ -60,7 +60,8 @@ export default function LoginPersona(props) {
         if (!hasErrors.current) {
             RestService.POST.loginPersona(dni, username, password)
                 .then(response => {
-                    history.push("/acciones", { usuario: response.data })
+                    localStorage.setItem("user", JSON.stringify(response.data))
+                    history.push("/acciones")
                 }).catch(error => {
                     setAlert({
                         display: 'block',
